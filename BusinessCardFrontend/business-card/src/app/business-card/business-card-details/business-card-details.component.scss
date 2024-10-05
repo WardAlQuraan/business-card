@@ -1,0 +1,36 @@
+.loading-spinner {
+  display: block;
+  margin: auto;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing between filter inputs */
+}
+
+.filter-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+  gap: 16px; /* Spacing between filter fields */
+}
+
+.filter-field {
+  width: 100%; /* Ensure full width of form fields */
+}
+
+.data-table {
+  width: 100%;
+  margin-top: 16px; /* Spacing between filters and table */
+}
+
+.mat-paginator {
+  margin-top: 16px; /* Spacing above the paginator */
+}
+
+.image-preview {
+  width: 50px; // Adjust as needed
+  height: 50px; // Adjust as needed
+  object-fit: cover; // Ensure the image covers the area
+}
+

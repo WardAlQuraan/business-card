@@ -1,0 +1,92 @@
+<mat-progress-spinner 
+  *ngIf="isLoading" 
+  mode="indeterminate" 
+  diameter="50" 
+  class="loading-spinner">
+</mat-progress-spinner>
+
+<div class="mat-elevation-z8 m-3 p-3 filter-container">
+  <!-- Filter Inputs -->
+  <div class="filter-inputs" *ngIf="!isLoading">
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Name</mat-label>
+      <input matInput (keyup)="applyFilter($event, 'name')" placeholder="Search Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Gender</mat-label>
+      <mat-select (selectionChange)="applyFilter($event, 'gender')" placeholder="Select Gender">
+        <mat-option value="">All</mat-option>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="applyFilter($event, 'dob')" placeholder="Select Date of Birth">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Email</mat-label>
+      <input matInput (keyup)="applyFilter($event, 'email')" placeholder="Search Email" type="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Phone</mat-label>
+      <input matInput (keyup)="applyFilter($event, 'phone')" placeholder="Search Phone" type="tel">
+    </mat-form-field>
+
+  </div>
+  <button mat-raised-button color="primary" (click)="getBusinessCards()" [disabled]="isLoading" style="cursor: pointer;">
+    Search
+  </button>
+
+  <mat-table [dataSource]="dataSource" matSort class="data-table">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.gender }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.dob | date }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.phone }}</mat-cell>
+    </ng-container>
+  
+    <!-- New Image Column -->
+    <ng-container matColumnDef="image">
+      <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img *ngIf="element.image" [src]="element.image" alt="Business Card Image" class="image-preview" />
+      </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  
+
+  <mat-paginator 
+    [pageSizeOptions]="[5, 10, 20]" 
+    showFirstLastButtons 
+    (page)="onPageChange()">
+  </mat-paginator>
+</div>

@@ -1,0 +1,61 @@
+.form-container {
+    max-width: 400px; /* Adjust as necessary */
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Background color for better contrast */
+  }
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 16px; /* Spacing between fields */
+  }
+
+  .drag-drop-area {
+    border: 2px dashed #007bff; /* Dashed border for drag area */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .drag-drop-area:hover {
+    background-color: #f0f8ff; /* Light background on hover */
+  }
+
+  .file-input {
+    display: none; /* Hide the file input */
+  }
+
+  .image-preview {
+    margin-top: 10px; /* Space between text and image */
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: rounded corners */
+  }
+
+  .submit-button {
+    width: 100%; /* Full width for the submit button */
+  }
+
+  .drag-drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for smoothness */
+}
+
+.drag-drop-area.drag-over {
+    background-color: rgba(0, 255, 0, 0.2); /* Change background color on drag over */
+    transform: scale(1.05); /* Slightly scale up the drop area */
+    border-color: #00ff00; /* Change border color on drag over */
+}
+
+.drag-drop-area img.image-preview {
+    max-width: 100%; /* Ensure the preview image is responsive */
+    margin-top: 10px; /* Add some space above the preview */
+}

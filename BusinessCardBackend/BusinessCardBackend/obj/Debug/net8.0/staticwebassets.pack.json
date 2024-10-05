@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg",
+      "PackagePath": "staticwebassets\\images\\jpeg.jpeg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BusinessCardBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BusinessCardBackend.props",
+      "PackagePath": "build\\BusinessCardBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BusinessCardBackend.props",
+      "PackagePath": "buildMultiTargeting\\BusinessCardBackend.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BusinessCardBackend.props",
+      "PackagePath": "buildTransitive\\BusinessCardBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

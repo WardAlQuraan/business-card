@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "XOI/MCMyh2/n/44xExf1iBpctx059ValI8HSg/VGz08=",
+  "Source": "BusinessCardBackend",
+  "BasePath": "_content/BusinessCardBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BusinessCardBackend\\wwwroot",
+      "Source": "BusinessCardBackend",
+      "ContentRoot": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\",
+      "BasePath": "_content/BusinessCardBackend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg",
+      "SourceId": "BusinessCardBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\",
+      "BasePath": "_content/BusinessCardBackend",
+      "RelativePath": "images/jpeg.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\jpeg.jpeg"
+    }
+  ]
+}

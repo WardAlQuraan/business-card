@@ -1,0 +1,41 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" [class.sidebar-toggled]="isToggled">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+            <mat-icon style="font-size: 40px; color: white;">business</mat-icon>
+        </div>
+        <div class="sidebar-brand-text mx-3">Business Card</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Items -->
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/business-cards">
+            <mat-icon>list</mat-icon>
+            <span>Business Cards</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/business-card-form">
+            <mat-icon>add_circle</mat-icon> <!-- Changed icon for better visual -->
+            <span>Add New</span>
+        </a>
+    </li>
+
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline" >
+        <button class="rounded-circle border-0 sidebar-toggle-button" (click)="toggleSidebar()">
+            <mat-icon>{{ isToggled ? 'chevron_right' : 'chevron_left' }}</mat-icon> <!-- Toggle icon -->
+        </button>
+    </div>
+</ul>
+<!-- End of Sidebar -->

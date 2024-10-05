@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "rVIW8ZRnoBA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\w.alquraan\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\w.alquraan\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\w.alquraan\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
