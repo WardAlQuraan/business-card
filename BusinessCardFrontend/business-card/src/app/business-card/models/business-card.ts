@@ -4,5 +4,6 @@ export interface IBusinessCard {
     dob: Date; 
     email: string;
     phone: string;
-    image?: string;  
+    image?: string;
+    base64?: string;  
   }

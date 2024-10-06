@@ -34,3 +34,9 @@
   object-fit: cover; // Ensure the image covers the area
 }
 
+.button-container {
+  display: flex;
+  gap: 10px; /* Adds space between buttons */
+  margin-bottom: 20px; /* Space below buttons */
+}
+

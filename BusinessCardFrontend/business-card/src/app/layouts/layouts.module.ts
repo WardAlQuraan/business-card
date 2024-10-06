@@ -7,15 +7,19 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
 import { SharedModuleModule } from '../shared-module/shared-module.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessCardFormComponent } from '../business-card/business-card-form/business-card-form.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { DndModule } from 'ngx-drag-drop'; // Import the DndModule
+import { ImageDialougComponent } from '../business-card/image-dialoug/image-dialoug.component';
+import { DeleteBusinessCardDialogComponent } from '../business-card/delete-business-card-dialog/delete-business-card-dialog.component';
+import { InsertBulkFormComponent } from '../business-card/insert-bulk-form/insert-bulk-form.component';
 
 
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
-    BusinessCardFormComponent
+    BusinessCardFormComponent,
+    ImageDialougComponent,
+    DeleteBusinessCardDialogComponent,
+    InsertBulkFormComponent
   ],
   imports: [
     CommonModule,

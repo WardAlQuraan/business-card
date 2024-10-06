@@ -41,11 +41,32 @@
     </mat-form-field>
 
   </div>
-  <button mat-raised-button color="primary" (click)="getBusinessCards()" [disabled]="isLoading" style="cursor: pointer;">
-    Search
-  </button>
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="getBusinessCards()" [disabled]="isLoading" style="cursor: pointer;">
+      <mat-icon>search</mat-icon>
+      Search
+    </button>
+    <button mat-raised-button color="primary" (click)="exportToXml()" [disabled]="isLoading" style="cursor: pointer;">
+      <mat-icon>file_download</mat-icon>
+      Export To XML
+    </button>
+    <button mat-raised-button color="primary" (click)="exportToCsv()" [disabled]="isLoading" style="cursor: pointer;">
+      <mat-icon>file_download</mat-icon>
+      Export To CSV
+    </button>
+    <button mat-raised-button color="primary" routerLink="../business-card-form" [disabled]="isLoading" style="cursor: pointer;">
+      <mat-icon>add</mat-icon>
+      Add New
+    </button>
+    <button mat-raised-button color="primary" routerLink="../insert-bulk"  [disabled]="isLoading" style="cursor: pointer;">
+      <mat-icon>upload</mat-icon>
+      Import File
+    </button>
 
-  <mat-table [dataSource]="dataSource" matSort class="data-table">
+  </div>
+  
+
+  <mat-table [dataSource]="dataSource" matSort class="data-table" (matSortChange)="sortTable($event)">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
@@ -71,22 +92,49 @@
       <mat-cell *matCellDef="let element">{{ element.phone }}</mat-cell>
     </ng-container>
   
-    <!-- New Image Column -->
-    <ng-container matColumnDef="image">
+    <ng-container matColumnDef="imagePath">
       <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <img *ngIf="element.image" [src]="element.image" alt="Business Card Image" class="image-preview" />
+        <img *ngIf="element.base64"
+        [src]="'data:image/png;base64,' + element.base64"
+        alt="Business Card Image"
+        class="image-preview"
+        (click)="openImageDialog(element.base64)" />
+   
       </mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="qr-code">
+      <mat-header-cell *matHeaderCellDef>Generate QR code</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button style="background-color: black; color: white;" (click)="generateQrCode(element)">
+          <mat-icon style="color: white;">qr_code_2</mat-icon>
+          QR Code
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" (click)="onDelete(element.id)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </mat-cell>
+    </ng-container>
+    
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   
 
-  <mat-paginator 
-    [pageSizeOptions]="[5, 10, 20]" 
-    showFirstLastButtons 
-    (page)="onPageChange()">
-  </mat-paginator>
+  <mat-paginator
+  [length]="count"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
 </div>

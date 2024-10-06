@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IBusinessCard } from '../models/business-card';
 import { BusinessCardService } from 'src/app/services/business-card/business-card.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-
+import * as QRCode from 'qrcode';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-business-card-form',
   templateUrl: './business-card-form.component.html',
@@ -11,22 +12,27 @@ import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 })
 export class BusinessCardFormComponent implements OnInit {
 
+  isLoading = false;
   businessCardForm!: FormGroup;
   file: File | undefined;
   imagePreview: string | undefined;
-
-  constructor(private fb: FormBuilder, private businessCardService: BusinessCardService, private snackbarService: SnackbarService) {
+  constructor(
+    private fb: FormBuilder,
+    private businessCardService: BusinessCardService,
+    private snackbarService: SnackbarService,
+    private router: Router) {
     this.businessCardForm = this.fb.group({
       name: ['', Validators.required], // Required
       gender: ['', Validators.required], // Required
       dob: ['', Validators.required], // Required
       email: ['', [Validators.required, Validators.email]], // Required and email format
       phone: ['', Validators.required],
-      image: [''],
+      image: ['']
+
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getFile(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -57,6 +63,8 @@ export class BusinessCardFormComponent implements OnInit {
     reader.readAsDataURL(file); // Read file as data URL
   }
 
+
+
   onDragOver(event: DragEvent): void {
     event.preventDefault();
     event.stopPropagation();
@@ -75,30 +83,33 @@ export class BusinessCardFormComponent implements OnInit {
     }
   }
 
- onSubmit() {
+  onSubmit() {
     if (this.businessCardForm.valid) {
-        const formData = new FormData();
-        formData.append('name', this.businessCardForm.get('name')?.value);
-        formData.append('gender', this.businessCardForm.get('gender')?.value);
-        formData.append('dob', this.businessCardForm.get('dob')?.value.toISOString());
-        formData.append('email', this.businessCardForm.get('email')?.value);
-        formData.append('phone', this.businessCardForm.get('phone')?.value);
-        formData.append('image', this.businessCardForm.get('image')?.value); // Use 'file' control to get the uploaded image
+      const formData = new FormData();
+      formData.append('name', this.businessCardForm.get('name')?.value);
+      formData.append('gender', this.businessCardForm.get('gender')?.value);
+      formData.append('dob', this.businessCardForm.get('dob')?.value.toISOString());
+      formData.append('email', this.businessCardForm.get('email')?.value);
+      formData.append('phone', this.businessCardForm.get('phone')?.value);
+      formData.append('image', this.businessCardForm.get('image')?.value); // Use 'file' control to get the uploaded image
 
-        this.businessCardService.insert(formData).subscribe(
-            (response) => {
-                this.snackbarService.showSuccess('Business card added successfully!');
-                this.businessCardForm.reset(); // Reset form after successful submission
-                this.file = undefined;
-            },
-            (error) => {
-                console.error('Error inserting business card:', error);
-                this.snackbarService.showError('Failed to add business card.');
-            }
-        );
+      this.businessCardService.insert(formData).subscribe(
+        (response) => {
+          this.isLoading = true;
+          this.snackbarService.showSuccess('Business card added successfully!');
+          this.businessCardForm.reset(); // Reset form after successful submission
+          this.file = undefined;
+          this.router.navigate(["../"]);
+        },
+        (error) => {
+          this.isLoading = false;
+          console.error('Error inserting business card:', error);
+          this.snackbarService.showError('Failed to add business card.');
+        }
+      );
     } else {
-        console.log('Form is invalid', this.businessCardForm);
+      console.log('Form is invalid', this.businessCardForm);
     }
-}
+  }
 
 }

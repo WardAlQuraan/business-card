@@ -1,4 +1,5 @@
 export interface BusinessCardParams{
+    id?: string | null;
     name?: string | null;
     gender?: string| null;
     dob?: string| null; 
@@ -7,4 +8,5 @@ export interface BusinessCardParams{
     image?: string | null;
     sortColumn?: string | null;
     sortDirection?: string | null; 
+    base64?: string | null
 }

@@ -15,7 +15,7 @@ import { DndModule } from 'ngx-drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
-    BusinessCardDetailsComponent
+    BusinessCardDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  host: "https://localhost:44355/api/",
-  businessCardApi: "BusinessCards"
+  host: "https://localhost:44355/",
+  businessCardApi: "api/BusinessCards/"
 };
 
 /*

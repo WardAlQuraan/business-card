@@ -1,12 +1,21 @@
+
+<mat-progress-spinner 
+  *ngIf="isLoading" 
+  mode="indeterminate" 
+  diameter="50" 
+  class="loading-spinner">
+</mat-progress-spinner>
 <div class="form-container">
+
     <form [formGroup]="businessCardForm" (ngSubmit)="onSubmit()">
+        
+        <h2>Business Card Form</h2> <!-- Added a heading for clarity -->
 
         <!-- Name Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="name" placeholder="Enter Name">
-            <mat-error
-                *ngIf="businessCardForm.get('name')?.hasError('required') && businessCardForm.get('name')?.touched">
+            <input matInput formControlName="name" placeholder="Enter Name" />
+            <mat-error *ngIf="businessCardForm.get('name')?.hasError('required') && businessCardForm.get('name')?.touched">
                 Name is required.
             </mat-error>
         </mat-form-field>
@@ -18,8 +27,7 @@
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="female">Female</mat-option>
             </mat-select>
-            <mat-error
-                *ngIf="businessCardForm.get('gender')?.hasError('required') && businessCardForm.get('gender')?.touched">
+            <mat-error *ngIf="businessCardForm.get('gender')?.hasError('required') && businessCardForm.get('gender')?.touched">
                 Gender is required.
             </mat-error>
         </mat-form-field>
@@ -27,11 +35,10 @@
         <!-- Date of Birth Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Date of Birth</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Select Date of Birth">
+            <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Select Date of Birth" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error
-                *ngIf="businessCardForm.get('dob')?.hasError('required') && businessCardForm.get('dob')?.touched">
+            <mat-error *ngIf="businessCardForm.get('dob')?.hasError('required') && businessCardForm.get('dob')?.touched">
                 Date of Birth is required.
             </mat-error>
         </mat-form-field>
@@ -39,13 +46,11 @@
         <!-- Email Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Enter Email" type="email">
-            <mat-error
-                *ngIf="businessCardForm.get('email')?.hasError('required') && businessCardForm.get('email')?.touched">
+            <input matInput formControlName="email" placeholder="Enter Email" type="email" />
+            <mat-error *ngIf="businessCardForm.get('email')?.hasError('required') && businessCardForm.get('email')?.touched">
                 Email is required.
             </mat-error>
-            <mat-error
-                *ngIf="businessCardForm.get('email')?.hasError('email') && businessCardForm.get('email')?.touched">
+            <mat-error *ngIf="businessCardForm.get('email')?.hasError('email') && businessCardForm.get('email')?.touched">
                 Please enter a valid email.
             </mat-error>
         </mat-form-field>
@@ -53,28 +58,25 @@
         <!-- Phone Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Phone</mat-label>
-            <input matInput formControlName="phone" placeholder="Enter Phone Number" type="tel">
-            <mat-error
-                *ngIf="businessCardForm.get('phone')?.hasError('required') && businessCardForm.get('phone')?.touched">
+            <input matInput formControlName="phone" placeholder="Enter Phone Number" type="tel" />
+            <mat-error *ngIf="businessCardForm.get('phone')?.hasError('required') && businessCardForm.get('phone')?.touched">
                 Phone number is required.
             </mat-error>
         </mat-form-field>
 
-        <!-- Drag-and-Drop File Upload Area -->
+     
 
+        <!-- Drag-and-Drop File Upload Area -->
         <div class="drag-drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
             (drop)="onDrop($event)" (click)="fileInput.click()">
             <p *ngIf="!businessCardForm.get('image')?.value">Drag & Drop your file here or click to upload</p>
             <p *ngIf="businessCardForm.get('image')?.value">File Name: {{ businessCardForm.get('image')?.value.name }}</p>
-            <input type="file" (change)="getFile($event)" #fileInput class="file-input" accept="image/*" hidden>
-            
-
-            <!-- Image Preview -->
+            <input type="file" (change)="getFile($event)" #fileInput class="file-input" accept="image/*" hidden />
             <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="image-preview" />
         </div>
 
+    
         <!-- Submit Button -->
-        <button mat-raised-button color="primary" type="submit" class="submit-button" >Submit</button>
-
+        <button mat-raised-button color="primary" type="submit" class="submit-button m-2">Submit</button>
     </form>
 </div>
