@@ -10,3 +10,7 @@ C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTI
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\obj\Debug\net8.0\BUSINESS_CARD_ENTITIES.pdb
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\obj\Debug\net8.0\ref\BUSINESS_CARD_ENTITIES.dll
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\obj\Debug\net8.0\BUSINESS_CARD_ENTITIES.csproj.AssemblyReference.cache
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\obj\Debug\net8.0\BUSINESS_CARD_ENTITIES.sourcelink.json
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\bin\Debug\net8.0\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\bin\Debug\net8.0\BUSINESS_CARD_CORE.pdb
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_ENTITIES\obj\Debug\net8.0\BUSINESS.99181582.Up2Date

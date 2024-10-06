@@ -1045,10 +1045,21 @@
           "bin/placeholder/BUSINESS_CARD_CONTEXT.dll": {}
         }
       },
+      "BUSINESS_CARD_CORE/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BUSINESS_CARD_CORE.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BUSINESS_CARD_CORE.dll": {}
+        }
+      },
       "BUSINESS_CARD_ENTITIES/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "BUSINESS_CARD_CORE": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "compile": {
@@ -2920,6 +2931,11 @@
       "type": "project",
       "path": "../BUSINESS_CARD_CONTEXT/BUSINESS_CARD_CONTEXT.csproj",
       "msbuildProject": "../BUSINESS_CARD_CONTEXT/BUSINESS_CARD_CONTEXT.csproj"
+    },
+    "BUSINESS_CARD_CORE/1.0.0": {
+      "type": "project",
+      "path": "../BUSINESS_CARD_CORE/BUSINESS_CARD_CORE.csproj",
+      "msbuildProject": "../BUSINESS_CARD_CORE/BUSINESS_CARD_CORE.csproj"
     },
     "BUSINESS_CARD_ENTITIES/1.0.0": {
       "type": "project",

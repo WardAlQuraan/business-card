@@ -1,0 +1,12 @@
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\bin\Debug\net8.0\BUSINESS_CARD_CORE.deps.json
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\bin\Debug\net8.0\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\bin\Debug\net8.0\BUSINESS_CARD_CORE.pdb
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.AssemblyInfoInputs.cache
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.AssemblyInfo.cs
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.csproj.CoreCompileInputs.cache
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.sourcelink.json
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\refint\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\BUSINESS_CARD_CORE.pdb
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_CORE\obj\Debug\net8.0\ref\BUSINESS_CARD_CORE.dll

@@ -17,3 +17,6 @@ C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERV
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\obj\Debug\net8.0\refint\BUSINESS_CARD_SERVICE.dll
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\obj\Debug\net8.0\BUSINESS_CARD_SERVICE.pdb
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\obj\Debug\net8.0\ref\BUSINESS_CARD_SERVICE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\obj\Debug\net8.0\BUSINESS_CARD_SERVICE.sourcelink.json
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\bin\Debug\net8.0\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_SERVICE\bin\Debug\net8.0\BUSINESS_CARD_CORE.pdb

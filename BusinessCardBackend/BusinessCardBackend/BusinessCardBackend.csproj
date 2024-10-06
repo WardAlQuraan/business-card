@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BUSINESS_CARD_CONTEXT\BUSINESS_CARD_CONTEXT.csproj" />
+    <ProjectReference Include="..\BUSINESS_CARD_CORE\BUSINESS_CARD_CORE.csproj" />
     <ProjectReference Include="..\BUSINESS_CARD_ENTITIES\BUSINESS_CARD_ENTITIES.csproj" />
     <ProjectReference Include="..\BUSINESS_CARD_REPOSITORIES\BUSINESS_CARD_REPOSITORIES.csproj" />
     <ProjectReference Include="..\BUSINESS_CARD_SERVICE\BUSINESS_CARD_SERVICE.csproj" />

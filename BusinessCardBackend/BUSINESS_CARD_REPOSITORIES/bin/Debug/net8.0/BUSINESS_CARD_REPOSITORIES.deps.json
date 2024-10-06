@@ -598,8 +598,14 @@
           "BUSINESS_CARD_CONTEXT.dll": {}
         }
       },
+      "BUSINESS_CARD_CORE/1.0.0": {
+        "runtime": {
+          "BUSINESS_CARD_CORE.dll": {}
+        }
+      },
       "BUSINESS_CARD_ENTITIES/1.0.0": {
         "dependencies": {
+          "BUSINESS_CARD_CORE": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
@@ -1021,6 +1027,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "BUSINESS_CARD_CONTEXT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BUSINESS_CARD_CORE/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

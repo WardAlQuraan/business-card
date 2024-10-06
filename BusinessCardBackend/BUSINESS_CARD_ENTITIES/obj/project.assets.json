@@ -44,6 +44,16 @@
             "related": ".xml"
           }
         }
+      },
+      "BUSINESS_CARD_CORE/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/BUSINESS_CARD_CORE.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BUSINESS_CARD_CORE.dll": {}
+        }
       }
     }
   },
@@ -114,10 +124,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BUSINESS_CARD_CORE/1.0.0": {
+      "type": "project",
+      "path": "../BUSINESS_CARD_CORE/BUSINESS_CARD_CORE.csproj",
+      "msbuildProject": "../BUSINESS_CARD_CORE/BUSINESS_CARD_CORE.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "BUSINESS_CARD_CORE >= 1.0.0",
       "Microsoft.AspNetCore.Http.Features >= 5.0.17"
     ]
   },
@@ -148,7 +164,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj": {
+              "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

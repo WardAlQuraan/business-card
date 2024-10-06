@@ -15,3 +15,6 @@ C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPO
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\obj\Debug\net8.0\refint\BUSINESS_CARD_REPOSITORIES.dll
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\obj\Debug\net8.0\BUSINESS_CARD_REPOSITORIES.pdb
 C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\obj\Debug\net8.0\ref\BUSINESS_CARD_REPOSITORIES.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\obj\Debug\net8.0\BUSINESS_CARD_REPOSITORIES.sourcelink.json
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\bin\Debug\net8.0\BUSINESS_CARD_CORE.dll
+C:\Users\w.alquraan\Desktop\Business Card\BusinessCardBackend\BUSINESS_CARD_REPOSITORIES\bin\Debug\net8.0\BUSINESS_CARD_CORE.pdb

@@ -939,8 +939,14 @@
           }
         }
       },
+      "BUSINESS_CARD_CORE/1.0.0": {
+        "runtime": {
+          "BUSINESS_CARD_CORE.dll": {}
+        }
+      },
       "BUSINESS_CARD_ENTITIES/1.0.0": {
         "dependencies": {
+          "BUSINESS_CARD_CORE": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
@@ -1493,6 +1499,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "BUSINESS_CARD_CORE/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "BUSINESS_CARD_ENTITIES/1.0.0": {
       "type": "project",

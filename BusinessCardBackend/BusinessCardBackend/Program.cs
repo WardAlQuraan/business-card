@@ -1,6 +1,9 @@
 using BUSINESS_CARD_CONTEXT;
+using BUSINESS_CARD_CORE;
 using BUSINESS_CARD_REPOSITORIES;
 using BUSINESS_CARD_SERVICE;
+using BUSINESS_CARD_SERVICE.CommonServices;
+using BUSINESS_CARD_SERVICE.CommonServices.QrCode;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +15,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var appSettingsSection = builder.Configuration.GetSection("AppSettings");
+var appSettings = appSettingsSection.Get<AppSettings>();
+
+GlobalAppSettings.AppSettings = appSettings;
+
 builder.Services.AddDbContext<BusinessCardContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("BusinessCardConnectionString"),
+    options.UseSqlServer(GlobalAppSettings.AppSettings.BusinessCardConnectionString,
     sqlServerOptionsAction: sqlOptions =>
     {
         sqlOptions.EnableRetryOnFailure();
@@ -22,6 +30,10 @@ builder.Services.AddDbContext<BusinessCardContext>(options =>
 
 builder.Services.AddScoped<IBusinessCardRepo , BusinessCardRepo>();
 builder.Services.AddScoped<IBusinessCardService , BusinessCardService>();
+builder.Services.AddScoped<ICsvBase64Service, CsvBase64Service>();
+builder.Services.AddScoped<IXmlBase64Service , XmlBase64Service>();
+builder.Services.AddScoped<IQrCodeService, QrCodeService>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("businessCardCors",
@@ -43,6 +55,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
+
 
 app.UseCors("businessCardCors");
 

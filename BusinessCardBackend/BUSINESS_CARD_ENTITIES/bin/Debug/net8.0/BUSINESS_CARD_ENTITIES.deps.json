@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "BUSINESS_CARD_ENTITIES/1.0.0": {
         "dependencies": {
+          "BUSINESS_CARD_CORE": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17"
         },
         "runtime": {
@@ -41,6 +42,11 @@
             "fileVersion": "5.0.1522.11506"
           }
         }
+      },
+      "BUSINESS_CARD_CORE/1.0.0": {
+        "runtime": {
+          "BUSINESS_CARD_CORE.dll": {}
+        }
       }
     }
   },
@@ -70,6 +76,11 @@
       "sha512": "sha512-Iew+dfa6FFiyvWBdRmXApixRY1db+beyutpIck4SOSe0NLM8FD/7AD54MscqVLhvfSMLHO7KadjTRT7fqxOGTA==",
       "path": "system.io.pipelines/5.0.2",
       "hashPath": "system.io.pipelines.5.0.2.nupkg.sha512"
+    },
+    "BUSINESS_CARD_CORE/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

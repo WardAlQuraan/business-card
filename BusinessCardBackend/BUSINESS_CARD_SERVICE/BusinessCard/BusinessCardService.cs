@@ -1,57 +1,84 @@
-﻿using BUSINESS_CARD_CONTEXT;
+using BUSINESS_CARD_CONTEXT;
+using BUSINESS_CARD_CORE;
+using BUSINESS_CARD_CORE.CommonEnums;
 using BUSINESS_CARD_ENTITIES;
 using BUSINESS_CARD_REPOSITORIES;
+using BUSINESS_CARD_SERVICE.CommonServices;
+using BUSINESS_CARD_SERVICE.CommonServices.QrCode;
+using BUSINESS_CARD_SERVICE.Helpers;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BUSINESS_CARD_SERVICE
 {
-    public class BusinessCardService:IBusinessCardService
+  public class BusinessCardService : IBusinessCardService
+  {
+    private readonly IBusinessCardRepo _businessCardRepo;
+    private readonly IXmlBase64Service _xmlBase64Service;
+    private readonly ICsvBase64Service _csvBase64Service;
+    private readonly IQrCodeService _qrCodeService;
+
+    public BusinessCardService(IBusinessCardRepo businessCardRepo, ICsvBase64Service csvBase64Service, IXmlBase64Service xmlBase64Service, IQrCodeService qrCodeService)
     {
-        private readonly IBusinessCardRepo _businessCardRepo;
-
-        public BusinessCardService(IBusinessCardRepo businessCardRepo)
-        {
-            _businessCardRepo = businessCardRepo;
-        }
-
-        public async Task<List<BusinessCard>> SearchAsync(BusinessCardParam param)
-        {
-            return await _businessCardRepo.SearchAsync(param);
-        }
-
-        public async Task<BusinessCard> InsertAsync(BusinessCard businessCard)
-        {
-            if (businessCard.Image != null) 
-            {
-                businessCard.ImagePath = await SaveImage(businessCard.Image);
-            }
-            return await _businessCardRepo.InsertAsync(businessCard);
-        }
-
-        private async Task<string> SaveImage(IFormFile file)
-        {
-            if (file == null || file.Length == 0)
-            {
-                return null; // Handle error accordingly
-            }
-
-            var filePath = Path.Combine("wwwroot/images", file.FileName); // Change the path as needed
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            return filePath; // Return the path where the image is saved
-        }
-
-        public async Task<bool> DeleteAsync(int id)
-        {
-            return await _businessCardRepo.DeleteAsync(id);
-        }
+      _businessCardRepo = businessCardRepo;
+      _csvBase64Service = csvBase64Service;
+      _xmlBase64Service = xmlBase64Service;
+      _qrCodeService = qrCodeService;
     }
+
+    public async Task<PaginationResult<BusinessCard>> SearchAsync(BusinessCardSearchParam param)
+    {
+      return await _businessCardRepo.SearchAsync(param);
+    }
+   
+    public async Task<BusinessCard> InsertAsync(BusinessCardInsertParam businessCard)
+    {
+      if (businessCard.Image != null)
+      {
+        businessCard.Base64 = await FilesHelper.GetBase64(businessCard.Image);
+      }
+      return await _businessCardRepo.InsertAsync(businessCard);
+    }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+      return await _businessCardRepo.DeleteAsync(id);
+    }
+
+
+    public async Task<int> Import(ImportFileParams @params)
+    {
+      List<BusinessCard> businessCards = new List<BusinessCard>();
+      switch (@params.FileType)
+      {
+        case FileType.CSV:
+          businessCards = await _csvBase64Service.GetBusinessCards(@params.File);
+          break;
+        case FileType.XML:
+          businessCards = await _xmlBase64Service.GetBusinessCards(@params.File);
+          break;
+        default:
+          var businessCard = await _qrCodeService.GetBusinessCard(@params.File);
+          if(businessCard != null)
+          {
+            businessCards.Add(businessCard);
+          }
+          break;
+      }
+      if(businessCards.Any())
+      {
+        return await _businessCardRepo.BulkInsertAsync(businessCards);
+      }
+      return 0;
+
+    }
+  }
 }

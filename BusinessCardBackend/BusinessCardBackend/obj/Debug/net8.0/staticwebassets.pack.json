@@ -1,8 +1,20 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\go-logo.png",
+      "PackagePath": "staticwebassets\\images\\go-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\go-logo.pngaca0cf9c-f3db-4313-a1f1-983b8b681bb7",
+      "PackagePath": "staticwebassets\\images\\go-logo.pngaca0cf9c-f3db-4313-a1f1-983b8b681bb7"
+    },
+    {
       "Id": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg",
       "PackagePath": "staticwebassets\\images\\jpeg.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg4011105c-380f-48bc-af70-f677d5add9a2",
+      "PackagePath": "staticwebassets\\images\\jpeg.jpeg4011105c-380f-48bc-af70-f677d5add9a2"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BusinessCardBackend.Microsoft.AspNetCore.StaticWebAssets.props",

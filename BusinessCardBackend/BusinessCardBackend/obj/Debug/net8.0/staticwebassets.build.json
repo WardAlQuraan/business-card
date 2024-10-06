@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XOI/MCMyh2/n/44xExf1iBpctx059ValI8HSg/VGz08=",
+  "Hash": "0ydQOgx9bA7u1/Vr6Ruf4frpsGnL5E1VHwiZINu7RSc=",
   "Source": "BusinessCardBackend",
   "BasePath": "_content/BusinessCardBackend",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\go-logo.png",
+      "SourceId": "BusinessCardBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\",
+      "BasePath": "_content/BusinessCardBackend",
+      "RelativePath": "images/go-logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\go-logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\go-logo.pngaca0cf9c-f3db-4313-a1f1-983b8b681bb7",
+      "SourceId": "BusinessCardBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\",
+      "BasePath": "_content/BusinessCardBackend",
+      "RelativePath": "images/go-logo.pngaca0cf9c-f3db-4313-a1f1-983b8b681bb7",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\go-logo.pngaca0cf9c-f3db-4313-a1f1-983b8b681bb7"
+    },
     {
       "Identity": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg",
       "SourceId": "BusinessCardBackend",
@@ -34,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\jpeg.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\images\\jpeg.jpeg4011105c-380f-48bc-af70-f677d5add9a2",
+      "SourceId": "BusinessCardBackend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\wwwroot\\",
+      "BasePath": "_content/BusinessCardBackend",
+      "RelativePath": "images/jpeg.jpeg4011105c-380f-48bc-af70-f677d5add9a2",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\jpeg.jpeg4011105c-380f-48bc-af70-f677d5add9a2"
     }
   ]
 }
