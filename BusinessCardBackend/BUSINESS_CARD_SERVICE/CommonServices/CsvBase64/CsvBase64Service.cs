@@ -23,9 +23,9 @@ namespace BUSINESS_CARD_SERVICE.CommonServices
       _businessCardRepo = businessCardRepo;
     }
 
-    public async Task<byte[]> GetBase64()
+    public async Task<byte[]> GetBase64(BusinessCardSearchParam param)
     {
-      var businessCards = await _businessCardRepo.GetAllAsync();
+      var businessCards = await _businessCardRepo.GetAllAsync(param);
       var xml = FilesHelper.ConvertToCsv(businessCards); ;
       return Encoding.UTF8.GetBytes(xml);
     }

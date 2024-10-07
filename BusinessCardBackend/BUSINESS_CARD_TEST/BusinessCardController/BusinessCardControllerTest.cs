@@ -109,14 +109,15 @@ namespace BUSINESS_CARD_TEST
     public async Task Export_ShouldReturnCsvFile_WhenFileTypeIsCSV()
     {
       // Arrange
-      var fileType = FileType.CSV;
+      BusinessCardSearchParam param = new BusinessCardSearchParam();
+      param.FileType = FileType.CSV;
       var expectedBytes = Encoding.UTF8.GetBytes("mock data"); // Mock file content
 
-      _mockCsvBase64Service.Setup(service => service.GetBase64())
+      _mockCsvBase64Service.Setup(service => service.GetBase64(param))
           .ReturnsAsync(expectedBytes);
 
       // Act
-      var result = await _controller.Export(fileType);
+      var result = await _controller.Export(param);
 
       // Assert
       var fileResult = result as FileContentResult;
@@ -130,14 +131,15 @@ namespace BUSINESS_CARD_TEST
     public async Task Export_ShouldReturnCsvFile_WhenFileTypeIsXML()
     {
       // Arrange
-      var fileType = FileType.XML;
+      BusinessCardSearchParam param = new BusinessCardSearchParam();
+      param.FileType = FileType.XML;
       var expectedBytes = Encoding.UTF8.GetBytes("mock data"); // Mock file content
 
-      _mockXmlBase64Service.Setup(service => service.GetBase64())
+      _mockXmlBase64Service.Setup(service => service.GetBase64(param))
           .ReturnsAsync(expectedBytes);
 
       // Act
-      var result = await _controller.Export(fileType);
+      var result = await _controller.Export(param);
 
       // Assert
       var fileResult = result as FileContentResult;

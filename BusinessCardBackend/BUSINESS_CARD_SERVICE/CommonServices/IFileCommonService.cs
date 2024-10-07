@@ -5,7 +5,7 @@ namespace BUSINESS_CARD_SERVICE.CommonServices
 {
   public interface IFileCommonService
   {
-    Task<byte[]> GetBase64();
+    Task<byte[]> GetBase64(BusinessCardSearchParam param);
     Task<List<BusinessCard>> GetBusinessCards(IFormFile file);
 
 

@@ -8,7 +8,7 @@ namespace BUSINESS_CARD_REPOSITORIES
     Task<PaginationResult<BusinessCard>> SearchAsync(BusinessCardSearchParam param);
     Task<BusinessCard> InsertAsync(BusinessCardInsertParam newBusinessCard);
     Task<bool> DeleteAsync(int id);
-    Task<List<BusinessCard>> GetAllAsync();
+    Task<List<BusinessCard>> GetAllAsync(BusinessCardSearchParam param);
     Task<int> BulkInsertAsync(List<BusinessCard> businessCards);
   }
 }

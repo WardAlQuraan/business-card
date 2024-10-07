@@ -49,20 +49,20 @@ namespace BusinessCardBackend.Controllers
     }
 
     [HttpGet("export")]
-    public async Task<IActionResult> Export([FromQuery] FileType fileType)
+    public async Task<IActionResult> Export([FromQuery] BusinessCardSearchParam param)
     {
       byte[] bytes;
       string contentType;
       string extension;
-      switch (fileType)
+      switch (param.FileType)
       {
         case FileType.CSV:
-          bytes = await _csvBase64Service.GetBase64();
+          bytes = await _csvBase64Service.GetBase64(param);
           contentType = "text/csv";
           extension = "csv";
           break;
         default:
-          bytes = await _xmlBase64Service.GetBase64();
+          bytes = await _xmlBase64Service.GetBase64(param);
           contentType = "application/xml";
           extension = "xml";
           break;

@@ -31,7 +31,29 @@ namespace BUSINESS_CARD_REPOSITORIES
     public async Task<PaginationResult<BusinessCard>> SearchAsync(BusinessCardSearchParam param)
     {
       var query = _businessCardContext.BusinessCards.AsQueryable();
+      query = IQuerableFilter(param, query);
 
+      int count = await query.CountAsync();
+      var businessCards = await query
+            .Skip(param.PageIndex * param.PageSize)
+            .Take(param.PageSize)
+            .ToListAsync();
+
+      var res = new PaginationResult<BusinessCard>(businessCards, count, param);
+      return res;
+    }
+
+    public async Task<List<BusinessCard>> GetAllAsync(BusinessCardSearchParam param)
+    {
+      var query = _businessCardContext.BusinessCards.AsQueryable();
+      query = IQuerableFilter(param, query);
+
+      return await query.ToListAsync();
+    }
+
+
+    private IQueryable<BusinessCard> IQuerableFilter(BusinessCardSearchParam param, IQueryable<BusinessCard> query)
+    {
       if (!string.IsNullOrEmpty(param.SortColumn))
       {
         var prop = GetPropertyName(param.SortColumn, typeof(BusinessCard)); // Corrected method name
@@ -53,23 +75,10 @@ namespace BUSINESS_CARD_REPOSITORIES
           (string.IsNullOrEmpty(param.Gender) || b.Gender.Equals(param.Gender)) &&
           (!param.DOB.HasValue || b.DOB.Date == param.DOB.Value.Date)
       );
-
-      int count = await query.CountAsync();
-      var businessCards = await query
-            .Skip(param.PageIndex * param.PageSize)
-            .Take(param.PageSize)
-            .ToListAsync();
-
-      var res = new PaginationResult<BusinessCard>(businessCards , count , param);
-      return res;
+      return query;
     }
 
-
-    public async Task<List<BusinessCard>> GetAllAsync()
-    {
-      return await _businessCardContext.BusinessCards.ToListAsync();
-    }
-
+    
     public async Task<BusinessCard> InsertAsync(BusinessCardInsertParam newBusinessCard)
     {
       _businessCardContext.BusinessCards.Add(newBusinessCard);
