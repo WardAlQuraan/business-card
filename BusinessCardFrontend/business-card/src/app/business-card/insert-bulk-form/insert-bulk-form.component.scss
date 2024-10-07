@@ -3,37 +3,33 @@
     margin: auto;
   }
   
-.drag-drop-area {
-    border: 2px dashed #007bff; /* Border color */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px; /* Padding inside the area */
-    text-align: center; /* Center the text */
-    cursor: pointer; /* Show a pointer cursor when hovering */
-    transition: background-color 0.3s; /* Smooth transition for background color */
-  
-    &.drag-over {
-      background-color: rgba(0, 123, 255, 0.1); /* Light blue background when dragging over */
-    }
-  
-    .file-input {
-      display: none; /* Hide the default file input */
-    }
-  
-    .image-preview {
-      margin-top: 15px; /* Space above the preview image */
-      max-width: 100%; /* Make sure the image doesn't overflow */
-      max-height: 200px; /* Limit the height of the preview image */
-      border-radius: 4px; /* Rounded corners for the image */
-    }
-  }
-  .button-container {
+  .header-toolbar {
     display: flex;
-    justify-content: center; /* Centers the button horizontally */
-    margin-top: 10px; /* Optional spacing above the button */
-}
-
-  .clear-button {
-    margin-top: 10px; /* Optional spacing */
-}
-
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .header-icon {
+    margin-right: 10px;
+  }
+  
+  .drag-drop-area {
+    border: 2px dashed #cccccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .image-preview {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+  }
   

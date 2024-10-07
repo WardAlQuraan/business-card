@@ -11279,3 +11279,25 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Snackbar Styles */
+.error-snackbar {
+  background-color: #f44336; /* Red for error */
+  color: white;
+}
+
+.success-snackbar {
+  background-color: #4caf50; /* Green for success */
+  color: white;
+}
+
+.info-snackbar {
+  background-color: #2196f3; /* Blue for info */
+  color: white;
+}
+
+.warning-snackbar {
+  background-color: #ff9800; /* Orange for warning */
+  color: white;
+}
+

@@ -1,26 +1,34 @@
-
-<mat-progress-spinner 
-  *ngIf="isLoading" 
-  mode="indeterminate" 
-  diameter="50" 
-  class="loading-spinner">
-</mat-progress-spinner>
-
-<div class="drag-drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)"
-    (click)="fileInput.click()">
-    <p *ngIf="!businessCardForm.get('file')?.value">Drag & Drop your file here or click to upload</p>
-    <p *ngIf="businessCardForm.get('file')?.value">File Name: {{ businessCardForm.get('file')?.value.name }}</p>
-    <input type="file" (change)="getFile($event)" #fileInput class="file-input" accept=".csv, .xml, image/*" hidden />
-    <img *ngIf="filePreview" [src]="filePreview" alt="File Preview" class="image-preview" />
-    <p *ngIf="fileType && !filePreview">File uploaded but not an image: {{ businessCardForm.get('file')?.value.name }}</p>
-</div>
-
-<div class="button-container" *ngIf="businessCardForm.get('file')?.value">
-    <button mat-raised-button color="warn" (click)="clearFile()" class="clear-button m-1" [disabled]="isLoading">
-        <mat-icon>delete</mat-icon> Clear
-    </button>
-
-    <button mat-raised-button color="primary" (click)="uploadFile()" class="m-2" [disabled]="isLoading">
-        <mat-icon>upload</mat-icon> Upload
-    </button>
-</div>
+<mat-toolbar color="primary" class="header-toolbar">
+    <mat-icon class="header-icon">business</mat-icon>
+    <span>Upload Business Card</span>
+  </mat-toolbar>
+  
+  <mat-progress-spinner 
+    *ngIf="isLoading" 
+    mode="indeterminate" 
+    diameter="50" 
+    class="loading-spinner">
+  </mat-progress-spinner>
+  
+  <div class="drag-drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)"
+      (click)="fileInput.click()">
+      <p *ngIf="!businessCardForm.get('file')?.value">Drag & Drop your file here or click to upload</p>
+      <p *ngIf="businessCardForm.get('file')?.value">File Name: {{ businessCardForm.get('file')?.value.name }}</p>
+      <input type="file" (change)="getFile($event)" #fileInput class="file-input" accept=".csv, .xml, image/*" hidden />
+      <img *ngIf="filePreview" [src]="filePreview" alt="File Preview" class="image-preview" />
+      <p *ngIf="fileType && !filePreview">File uploaded but not an image: {{ businessCardForm.get('file')?.value.name }}</p>
+  </div>
+  
+  <!-- Hint about accepted file types -->
+  <p class="file-hint">Accepted file types: CSV, XML, QR code image.</p>
+  
+  <div class="button-container" *ngIf="businessCardForm.get('file')?.value">
+      <button mat-raised-button color="warn" (click)="clearFile()" class="clear-button m-1" [disabled]="isLoading">
+          <mat-icon>delete</mat-icon> Clear
+      </button>
+  
+      <button mat-raised-button color="primary" (click)="uploadFile()" class="m-2" [disabled]="isLoading">
+          <mat-icon>upload</mat-icon> Upload
+      </button>
+  </div>
+  

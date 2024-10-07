@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule
 import { MatDialogModule } from '@angular/material/dialog';
+import {  MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatNativeDateModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatToolbarModule
   ],
   exports: [
     MatTableModule,
@@ -51,7 +53,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ],
 })
 export class SharedModuleModule { }
