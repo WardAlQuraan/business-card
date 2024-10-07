@@ -49,7 +49,8 @@ export class BusinessCardDetailsComponent implements OnInit {
       gender: null,
       name: null,
       sortColumn: null,
-      sortDirection: null
+      sortDirection: null,
+      fileType: null
     };
     this.getBusinessCards();
   }
@@ -92,6 +93,7 @@ export class BusinessCardDetailsComponent implements OnInit {
       pageSize: this.pageSize,
       sortColumn: this.sort ? this.sort.active : null,
       sortDirection: this.sort ? this.sort.direction : null,
+      fileType : this.params.fileType
     };
   }
 
@@ -164,7 +166,8 @@ export class BusinessCardDetailsComponent implements OnInit {
 
 
   exportToXml() { 
-    this.businessCardService.export(FileType.xml).subscribe(response => {
+    this.params.fileType = FileType.xml;
+    this.businessCardService.export(this.params).subscribe(response => {
       const blob = new Blob([response], { type: 'application/xml' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -175,8 +178,9 @@ export class BusinessCardDetailsComponent implements OnInit {
     });
   }
   exportToCsv() { 
+    this.params.fileType = FileType.csv;
     
-    this.businessCardService.export(FileType.csv).subscribe(response => {
+    this.businessCardService.export(this.params).subscribe(response => {
       const blob = new Blob([response], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');

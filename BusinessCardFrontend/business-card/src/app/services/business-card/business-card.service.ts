@@ -31,8 +31,8 @@ export class BusinessCardService {
   }
 
 
-  export(fileType:FileType) {
-    let httpParams = this.getHttpParams({fileType});
+  export(params:any) {
+    let httpParams = this.getHttpParams(params);
 
     return this.http.get(`${this.path}export`, {params: httpParams , responseType: 'blob' });
   }
