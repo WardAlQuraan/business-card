@@ -1,0 +1,570 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_TEST\\BUSINESS_CARD_TEST.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\BusinessCardBackend.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\BusinessCardBackend.csproj",
+        "projectName": "BusinessCardBackend",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\BusinessCardBackend.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj"
+              },
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj"
+              },
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj"
+              },
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj"
+              },
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\BUSINESS_CARD_SERVICE.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\BUSINESS_CARD_SERVICE.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj",
+        "projectName": "BUSINESS_CARD_CONTEXT",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj",
+        "projectName": "BUSINESS_CARD_CORE",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj",
+        "projectName": "BUSINESS_CARD_ENTITIES",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\BUSINESS_CARD_ENTITIES.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_ENTITIES\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CORE\\BUSINESS_CARD_CORE.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj",
+        "projectName": "BUSINESS_CARD_REPOSITORIES",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_CONTEXT\\BUSINESS_CARD_CONTEXT.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\BUSINESS_CARD_SERVICE.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\BUSINESS_CARD_SERVICE.csproj",
+        "projectName": "BUSINESS_CARD_SERVICE",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\BUSINESS_CARD_SERVICE.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_SERVICE\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_REPOSITORIES\\BUSINESS_CARD_REPOSITORIES.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[33.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.9, )"
+            },
+            "ZXing.Net.Bindings.Windows.Compatibility": {
+              "target": "Package",
+              "version": "[0.16.12, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_TEST\\BUSINESS_CARD_TEST.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_TEST\\BUSINESS_CARD_TEST.csproj",
+        "projectName": "BUSINESS_CARD_TEST",
+        "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_TEST\\BUSINESS_CARD_TEST.csproj",
+        "packagesPath": "C:\\Users\\w.alquraan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BUSINESS_CARD_TEST\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\w.alquraan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\BusinessCardBackend.csproj": {
+                "projectPath": "C:\\Users\\w.alquraan\\Desktop\\Business Card\\BusinessCardBackend\\BusinessCardBackend\\BusinessCardBackend.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.12.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.72, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

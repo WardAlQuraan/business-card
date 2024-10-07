@@ -8,6 +8,10 @@ namespace BUSINESS_CARD_CORE
 {
   public class PaginationResult<T>
   {
+    public PaginationResult()
+    {
+    }
+
     public PaginationResult(List<T> data, int count, PaginateParam paginateParam)
     {
       Data = data;

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BUSINESS_CARD_CONTEXT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3150dcadacee13c4bfc8b965f091d67f36bf4174")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8ee65a7d17383ebb5a776a4149f38b420d443d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("BUSINESS_CARD_CONTEXT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BUSINESS_CARD_CONTEXT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
