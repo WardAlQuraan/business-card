@@ -64,7 +64,8 @@ export class InsertBulkFormComponent implements OnInit {
   }
 
   previewFile(file: File): void {
-    debugger
+    
+    this.file = file;
     if (this.fileType == FileType.qrCode) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -72,13 +73,13 @@ export class InsertBulkFormComponent implements OnInit {
       };
       reader.readAsDataURL(file); // Read file as data URL for preview
     } else {
-      this.file = file;
       this.filePreview = undefined;
       
     }
   }
 
   onDragOver(event: DragEvent): void {
+    this.file = undefined;
     event.preventDefault(); // Prevent default behavior
     event.stopPropagation();
     const dropArea = event.currentTarget as HTMLElement;

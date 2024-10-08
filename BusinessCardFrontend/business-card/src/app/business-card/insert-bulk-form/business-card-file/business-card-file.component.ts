@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ImageDialougComponent } from '../../image-dialoug/image-dialoug.component';
 import { BusinessCardService } from 'src/app/services/business-card/business-card.service';
 import { Router } from '@angular/router';
+import { QrCodeService } from 'src/app/services/qrCode/qr-code.service';
 
 @Component({
   selector: 'app-business-card-file',
@@ -32,6 +33,7 @@ export class BusinessCardFileComponent implements OnInit, AfterViewInit {
     private router: Router,
     private csvService: CsvService,
     private xmlService: XmlService,
+    private qrCodeService:QrCodeService,
     private businessCardService:BusinessCardService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog
@@ -50,6 +52,7 @@ export class BusinessCardFileComponent implements OnInit, AfterViewInit {
   }
 
   fetchData() {
+    debugger;
     if (this.file) {
       this.isLoading = true;
       if (this.fileType === FileType.csv) {
@@ -69,6 +72,19 @@ export class BusinessCardFileComponent implements OnInit, AfterViewInit {
         this.xmlService.getBusinessCard(this.file).subscribe(
           res => {
             this.businessCards = res;
+            this.dataSource = new MatTableDataSource(this.businessCards);
+            this.isLoading = false;
+            this.assignPaginator();
+          },
+          err => {
+            this.snackbarService.showError("Can't fetch data");
+            this.isLoading = false;
+          }
+        );
+      }else if (this.fileType === FileType.qrCode) {
+        this.qrCodeService.getBusinessCard(this.file).subscribe(
+          res => {
+            this.businessCards =  [res] ;
             this.dataSource = new MatTableDataSource(this.businessCards);
             this.isLoading = false;
             this.assignPaginator();

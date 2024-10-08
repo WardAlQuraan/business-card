@@ -8,6 +8,7 @@ export const environment = {
   businessCardApi: "api/BusinessCards/",
   csvApi: "api/csv/",
   xmlApi: "api/xml/",
+  qrCodeApi: "api/qrCode/",
 };
 
 /*

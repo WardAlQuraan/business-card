@@ -7,7 +7,6 @@ namespace BUSINESS_CARD_SERVICE
 {
   public interface IBusinessCardService : IBaseService<BusinessCard , BusinessCardSearchParam>
   {
-    Task<int> Import(ImportFileParams @params);
     Task<BusinessCard> InsertAsync(BusinessCardInsertParam businessCard);
 
   }

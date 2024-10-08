@@ -50,7 +50,7 @@
   </mat-table>
 
   <!-- Paginator -->
-  <mat-paginator [length]="businessCards.length"
+  <mat-paginator *ngIf="fileType != 2" [length]="businessCards.length"
                  [pageSize]="10"
                  [pageSizeOptions]="[5, 10, 25, 100]">
   </mat-paginator>

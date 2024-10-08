@@ -16,6 +16,7 @@
   }
   
   .drag-drop-area {
+    min-height: 300px;
     border: 2px dashed #cccccc;
     padding: 20px;
     text-align: center;
@@ -32,4 +33,8 @@
     display: flex;
     justify-content: flex-start;
   }
-  
+  .drag-drop-area.drag-over{
+    background-color: rgba(0, 255, 0, 0.2); /* Change background color on drag over */
+    transform: scale(1.05); /* Slightly scale up the drop area */
+    border-color: #00ff00; /* Change border color on drag over */
+  }
