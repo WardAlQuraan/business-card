@@ -49,6 +49,10 @@ namespace BUSINESS_CARD_REPOSITORIES
 
         if (prop is not null)
         {
+          if(param.SortDirection is null)
+          {
+            param.SortDirection = "desc";
+          }
           string orderByString = $"{prop} {(param.SortDirection.Equals("asc", StringComparison.OrdinalIgnoreCase) ? "asc"
               : "desc")}";
           query = query.OrderBy(orderByString);

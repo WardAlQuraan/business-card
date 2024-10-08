@@ -20,7 +20,7 @@ import { FileType } from '../models/fileType';
   styleUrls: ['./business-card-details.component.scss']
 })
 export class BusinessCardDetailsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'gender', 'dob', 'email', 'phone', 'imagePath', 'qr-code' ,'delete' ];
+  displayedColumns: string[] = ['id','name', 'gender', 'dob', 'email', 'phone', 'imagePath', 'qr-code', 'delete'];
   dataSource!: MatTableDataSource<IBusinessCard>;
   params!: BusinessCardParams;
   pageIndex = 0;
@@ -36,10 +36,10 @@ export class BusinessCardDetailsComponent implements OnInit {
   constructor(
     private businessCardService: BusinessCardService,
     private snackBarService: SnackbarService,
-    private dialog: MatDialog) { 
-      this.dataSource = new MatTableDataSource();
-      debugger;
-    }
+    private dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource();
+    debugger;
+  }
 
   ngOnInit(): void {
     this.params = {
@@ -59,19 +59,19 @@ export class BusinessCardDetailsComponent implements OnInit {
   getBusinessCards() {
     this.isLoading = true;
     const params = this.getParamsToSearch();
-  
+
     this.businessCardService.search(params).subscribe(
       res => {
-        this.businessCards = res.data; 
+        this.businessCards = res.data;
         this.dataSource = new MatTableDataSource(this.businessCards);
-        this.dataSource.sort = this.sort; 
+        this.dataSource.sort = this.sort;
         this.pageIndex = res.pageIndex;
         this.pageSize = res.pageSize;
-        
+
         // Ensure `count` is updated correctly
         this.count = res.count; // Total count for paginator
         console.log("Total Count:", this.count); // Log the count for debugging
-  
+
         this.isLoading = false;
       },
       err => {
@@ -80,7 +80,7 @@ export class BusinessCardDetailsComponent implements OnInit {
       }
     );
   }
-  
+
 
   getParamsToSearch() {
     return {
@@ -93,20 +93,18 @@ export class BusinessCardDetailsComponent implements OnInit {
       pageSize: this.pageSize,
       sortColumn: this.sort ? this.sort.active : null,
       sortDirection: this.sort ? this.sort.direction : null,
-      fileType : this.params.fileType
+      fileType: this.params.fileType
     };
   }
 
-  sortTable(event:any){
-      this.sort.active = event.active;
-      this.sort.direction = event.direction;
-      this.getBusinessCards();
+  sortTable(event: any) {
+    this.sort.active = event.active;
+    this.sort.direction = event.direction;
+    this.getBusinessCards();
   }
 
   applyFilter(event: Event | MatSelectChange | MatDatepickerInputEvent<any>, column: keyof IBusinessCard) {
     let filterValue: string | null = null;
-    debugger;
-
     if (event instanceof MatSelectChange) {
       filterValue = event.value;
     } else if (event instanceof MatDatepickerInputEvent) {
@@ -126,10 +124,10 @@ export class BusinessCardDetailsComponent implements OnInit {
 
     this.params[column] = filterValue;
 
-    
+
   }
 
-  onPageChange(event:any) {
+  onPageChange(event: any) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getBusinessCards();
@@ -165,45 +163,39 @@ export class BusinessCardDetailsComponent implements OnInit {
   }
 
 
-  exportToXml() { 
+  exportToXml() {
     this.params.fileType = FileType.xml;
     this.businessCardService.export(this.params).subscribe(response => {
       const blob = new Blob([response], { type: 'application/xml' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'businessCards.xml';
-      a.click();
-      window.URL.revokeObjectURL(url);
+      this.downloadFile(blob, 'businessCards', `xml`);
     });
   }
-  exportToCsv() { 
+  exportToCsv() {
     this.params.fileType = FileType.csv;
-    
     this.businessCardService.export(this.params).subscribe(response => {
       const blob = new Blob([response], { type: 'text/csv' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'businessCards.csv';
-      a.click();
-      window.URL.revokeObjectURL(url);
+      this.downloadFile(blob, 'businessCards', `csv`);
     });
   }
 
-  generateQrCode(businessCard:IBusinessCard) { 
-    
+  generateQrCode(businessCard: IBusinessCard) {
+
     this.businessCardService.generateQrCode(businessCard).subscribe(response => {
       const blob = new Blob([response]);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `qr-code(${businessCard.name}).png`;
-      a.click();
-      window.URL.revokeObjectURL(url);
-    },err=>{
+      this.downloadFile(blob, `qr-code(${businessCard.name})`, `png`);
+    }, err => {
       this.snackBarService.showError("Can't Generate Qr code")
     });
+  }
+
+
+  downloadFile(blob: Blob, fileName: string, extinsion: string) {
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${fileName}.${extinsion}`;
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
 
 }

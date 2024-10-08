@@ -17,5 +17,6 @@ namespace BUSINESS_CARD_SERVICE.CommonServices
     Task<PaginationResult<T>> SearchAsync(SP param);
     Task<T> InsertAsync(T item) ;
     Task<bool> DeleteAsync(int id);
+    Task<int> InsertBulkAsync(List<T> items);
   }
 }

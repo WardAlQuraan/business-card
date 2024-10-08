@@ -37,13 +37,8 @@ export class BusinessCardService {
     return this.http.get(`${this.path}export`, {params: httpParams , responseType: 'blob' });
   }
 
-  import(file: File, fileType: FileType): Observable<any> {
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    formData.append('fileType', fileType.toString());
-
-
-    return this.http.post(this.path + 'import', formData);
+  insertBulk(businessCards:IBusinessCard[]): Observable<any> {
+    return this.http.post(this.path + 'InsertBulk', businessCards);
   }
 
   generateQrCode(businessCard:IBusinessCard):Observable<any>{

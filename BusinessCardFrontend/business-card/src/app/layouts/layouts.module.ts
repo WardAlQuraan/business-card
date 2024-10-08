@@ -10,6 +10,7 @@ import { BusinessCardFormComponent } from '../business-card/business-card-form/b
 import { ImageDialougComponent } from '../business-card/image-dialoug/image-dialoug.component';
 import { DeleteBusinessCardDialogComponent } from '../business-card/delete-business-card-dialog/delete-business-card-dialog.component';
 import { InsertBulkFormComponent } from '../business-card/insert-bulk-form/insert-bulk-form.component';
+import { BusinessCardFileComponent } from '../business-card/insert-bulk-form/business-card-file/business-card-file.component';
 
 
 
@@ -19,7 +20,8 @@ import { InsertBulkFormComponent } from '../business-card/insert-bulk-form/inser
     BusinessCardFormComponent,
     ImageDialougComponent,
     DeleteBusinessCardDialogComponent,
-    InsertBulkFormComponent
+    InsertBulkFormComponent,
+    BusinessCardFileComponent
   ],
   imports: [
     CommonModule,

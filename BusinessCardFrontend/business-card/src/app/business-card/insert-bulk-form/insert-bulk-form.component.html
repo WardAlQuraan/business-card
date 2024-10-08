@@ -22,8 +22,8 @@
           <mat-icon>delete</mat-icon> Clear
       </button>
   
-      <button mat-raised-button color="primary" (click)="uploadFile()" class="m-2" [disabled]="isLoading">
-          <mat-icon>upload</mat-icon> Upload
-      </button>
+   
+
   </div>
   
+  <app-business-card-file *ngIf="file" [fileType]="fileType" [file]="file"></app-business-card-file>

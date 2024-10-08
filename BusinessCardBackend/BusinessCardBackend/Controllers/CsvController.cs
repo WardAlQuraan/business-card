@@ -8,7 +8,17 @@ namespace BusinessCardBackend.Controllers
   [ApiController]
   public class CsvController : ControllerBase
   {
-    private readonly ICsvService _csvBase64Service;
-    private readonly IXmlService _xmlBase64Service;
+    private readonly ICsvService _service;
+
+    public CsvController(ICsvService service)
+    {
+      _service = service;
+    }
+
+    [HttpPost("GetBusinessCards")]
+    public async Task<IActionResult> GetBusinessCards([FromForm]IFormFile file)
+    {
+      return Ok(await _service.GetBusinessCards(file));
+    }
   }
 }

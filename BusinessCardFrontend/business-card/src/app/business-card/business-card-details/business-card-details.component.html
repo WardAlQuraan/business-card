@@ -41,6 +41,7 @@
     </mat-form-field>
 
   </div>
+
   <div class="button-container">
     <button mat-raised-button color="primary" (click)="getBusinessCards()" [disabled]="isLoading" style="cursor: pointer;">
       <mat-icon>search</mat-icon>
@@ -67,6 +68,11 @@
   
 
   <mat-table [dataSource]="dataSource" matSort class="data-table" (matSortChange)="sortTable($event)">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+    
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>

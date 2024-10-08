@@ -4,6 +4,7 @@ import { BusinessCardService } from 'src/app/services/business-card/business-car
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { FileType } from '../models/fileType';
 import { Router } from '@angular/router';
+import { CsvService } from 'src/app/services/csv/csv.service';
 
 @Component({
   selector: 'app-insert-bulk-form',
@@ -18,10 +19,9 @@ export class InsertBulkFormComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private businessCardService: BusinessCardService,
+    
     private snackbarService: SnackbarService,
-    private fb: FormBuilder,
-    private router: Router) {
+    private fb: FormBuilder) {
     this.businessCardForm = this.fb.group({
       file: [null], // Changed 'image' to 'file'
     });
@@ -47,7 +47,6 @@ export class InsertBulkFormComponent implements OnInit {
   }
 
   updateFile(file: File): void {
-    debugger;
     const validFileTypes = ['text/csv', 'application/xml', 'text/xml', 'image/png', 'image/jpeg', 'image/gif'];
     if (validFileTypes.includes(file.type)) {
       this.businessCardForm.patchValue({ file }); // Update the form control with the file
@@ -65,7 +64,7 @@ export class InsertBulkFormComponent implements OnInit {
   }
 
   previewFile(file: File): void {
-    // Preview only if the file is an image
+    debugger
     if (this.fileType == FileType.qrCode) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -73,7 +72,9 @@ export class InsertBulkFormComponent implements OnInit {
       };
       reader.readAsDataURL(file); // Read file as data URL for preview
     } else {
-      this.filePreview = undefined; // Clear preview for non-image files
+      this.file = file;
+      this.filePreview = undefined;
+      
     }
   }
 
@@ -95,19 +96,8 @@ export class InsertBulkFormComponent implements OnInit {
     this.businessCardForm.patchValue({ file: null }); // Clear the form control value
     this.filePreview = undefined; // Clear the file preview
     this.fileType = undefined; // Clear the file type
+    this.file = undefined;
   }
 
-  uploadFile() {
-    this.isLoading = true;
-    this.businessCardService.import(this.businessCardForm.get("file")?.value, this.fileType!).subscribe(
-      res => {
-        this.snackbarService.showSuccess("Inserted successfully");
-        this.isLoading = false;
-        this.router.navigate(["../"])
-      }, err => {
-        this.snackbarService.showError("Can't insert");
-        this.isLoading = false;
-      }
-    )
-  }
+ 
 }

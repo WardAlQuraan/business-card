@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   host: "https://localhost:44355/",
-  businessCardApi: "api/BusinessCards/"
+  businessCardApi: "api/BusinessCards/",
+  csvApi: "api/csv/",
+  xmlApi: "api/xml/",
 };
 
 /*

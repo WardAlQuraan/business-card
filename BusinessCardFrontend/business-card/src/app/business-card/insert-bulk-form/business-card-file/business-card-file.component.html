@@ -1,0 +1,63 @@
+<mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="50" class="loading-spinner">
+</mat-progress-spinner>
+
+<div *ngIf="businessCards.length > 0" class="mat-elevation-z8 m-3 p-3 filter-container">
+  <mat-table [dataSource]="dataSource" matSort class="data-table">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Gender</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.gender }}</mat-cell>
+    </ng-container>
+
+    <!-- Date of Birth Column -->
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date of Birth</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.dob | date }}</mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.phone }}</mat-cell>
+    </ng-container>
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="imagePath">
+      <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img *ngIf="element.base64"
+             [src]="'data:image/png;base64,' + element.base64"
+             alt="Business Card Image"
+             class="image-preview"
+             (click)="openImageDialog(element.base64)" />
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <!-- Paginator -->
+  <mat-paginator [length]="businessCards.length"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="insertBulk()" class="m-2" [disabled]="isLoading">
+        <mat-icon>upload</mat-icon> Upload
+    </button>
+    </div>
+</div>

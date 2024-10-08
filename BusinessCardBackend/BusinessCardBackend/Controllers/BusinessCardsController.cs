@@ -75,10 +75,10 @@ namespace BusinessCardBackend.Controllers
     }
 
 
-    [HttpPost("import")]
-    public async Task<IActionResult> Import([FromForm] ImportFileParams @params)
+    [HttpPost("InsertBulk")]
+    public async Task<IActionResult> InsertBulk(List<BusinessCard> businessCards)
     {
-      return Ok(await _service.Import(@params));
+      return Ok(await _service.InsertBulkAsync(businessCards));
     }
 
     [HttpPost("GenerateQrCode")]

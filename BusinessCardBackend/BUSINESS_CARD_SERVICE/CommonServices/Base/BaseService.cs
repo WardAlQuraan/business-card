@@ -34,6 +34,11 @@ namespace BUSINESS_CARD_SERVICE.CommonServices.Base
       return await _repo.InsertAsync(businessCard);
     }
 
+    public virtual async Task<int> InsertBulkAsync(List<T> items)
+    {
+      return await _repo.BulkInsertAsync(items);
+    }
+
     public async Task<bool> DeleteAsync(int id)
     {
       return await _repo.DeleteAsync(id);
