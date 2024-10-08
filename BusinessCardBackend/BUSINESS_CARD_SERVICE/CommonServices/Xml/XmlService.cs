@@ -11,11 +11,11 @@ using System.Xml.Linq;
 
 namespace BUSINESS_CARD_SERVICE.CommonServices
 {
-  public class XmlBase64Service:IXmlBase64Service
+  public class XmlService:IXmlService
   {
     private readonly IBusinessCardRepo _businessCardRepo;
 
-    public XmlBase64Service(IBusinessCardRepo businessCardRepo)
+    public XmlService(IBusinessCardRepo businessCardRepo)
     {
       _businessCardRepo = businessCardRepo;
     }

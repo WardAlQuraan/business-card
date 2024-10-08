@@ -12,41 +12,43 @@ namespace BusinessCardBackend.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class BusinessCardsController : ControllerBase
+  public class BusinessCardsController : CommonController<
+    BusinessCard ,
+    IBusinessCardService ,
+    BusinessCardSearchParam
+    >
   {
-    private readonly IBusinessCardService _businessCardService;
-    private readonly IXmlBase64Service _xmlBase64Service;
-    private readonly ICsvBase64Service _csvBase64Service;
+    private readonly IXmlService _xmlBase64Service;
+    private readonly ICsvService _csvBase64Service;
     private readonly IQrCodeService _qrCodeService;
 
-    public BusinessCardsController(IBusinessCardService businessCardService, ICsvBase64Service csvBase64Service, IXmlBase64Service xmlBase64Service , IQrCodeService qrCodeService)
+    public BusinessCardsController(
+      IBusinessCardService businessCardService,
+      ICsvService csvBase64Service,
+      IXmlService xmlBase64Service ,
+      IQrCodeService qrCodeService) : base(businessCardService)
     {
-      _businessCardService = businessCardService;
       _csvBase64Service = csvBase64Service;
       _xmlBase64Service = xmlBase64Service;
       _qrCodeService = qrCodeService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] BusinessCardSearchParam param)
-    {
-      var entities = await _businessCardService.SearchAsync(param);
-      return Ok(entities);
-    }
+
 
     [HttpPost]
     public async Task<IActionResult> Post(BusinessCardInsertParam businessCard)
     {
-      var entities = await _businessCardService.InsertAsync(businessCard);
+      var entities = await _service.InsertAsync(businessCard);
       return Ok(entities);
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> Delete([FromQuery] int id)
+    [NonAction]
+    public override Task<IActionResult> Post(BusinessCard item)
     {
-      var entities = await _businessCardService.DeleteAsync(id);
-      return Ok(entities);
+      return base.Post(item);
     }
+
+    
 
     [HttpGet("export")]
     public async Task<IActionResult> Export([FromQuery] BusinessCardSearchParam param)
@@ -76,7 +78,7 @@ namespace BusinessCardBackend.Controllers
     [HttpPost("import")]
     public async Task<IActionResult> Import([FromForm] ImportFileParams @params)
     {
-      return Ok(await _businessCardService.Import(@params));
+      return Ok(await _service.Import(@params));
     }
 
     [HttpPost("GenerateQrCode")]

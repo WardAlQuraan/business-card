@@ -5,10 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BUSINESS_CARD_ENTITIES
 {
   [Table("BUSINESS_CARD")]
-  public class BusinessCard
+  public class BusinessCard:BaseEntity
   {
-    [Key]
-    public int Id { get; set; }
     [Required]
     public string Name { get; set; }
     [Required]

@@ -16,16 +16,16 @@ namespace BUSINESS_CARD_TEST
 {
   public class BusinessCardServiceTests
   {
-    private readonly Mock<ICsvBase64Service> _mockCsvBase64Service;
-    private readonly Mock<IXmlBase64Service> _mockXmlBase64Service;
+    private readonly Mock<ICsvService> _mockCsvBase64Service;
+    private readonly Mock<IXmlService> _mockXmlBase64Service;
     private readonly Mock<IQrCodeService> _mockQrCodeService;
     private readonly Mock<IBusinessCardRepo> _mockBusinessCardRepo;
     private readonly BusinessCardService _service;
 
     public BusinessCardServiceTests()
     {
-      _mockCsvBase64Service = new Mock<ICsvBase64Service>();
-      _mockXmlBase64Service = new Mock<IXmlBase64Service>();
+      _mockCsvBase64Service = new Mock<ICsvService>();
+      _mockXmlBase64Service = new Mock<IXmlService>();
       _mockQrCodeService = new Mock<IQrCodeService>();
       _mockBusinessCardRepo = new Mock<IBusinessCardRepo>();
 

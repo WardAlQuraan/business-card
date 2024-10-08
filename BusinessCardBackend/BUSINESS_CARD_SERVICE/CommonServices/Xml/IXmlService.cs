@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BUSINESS_CARD_SERVICE.CommonServices
 {
-  public interface IXmlBase64Service : IFileCommonService
+  public interface IXmlService : IFileCommonService
   {
   }
 }

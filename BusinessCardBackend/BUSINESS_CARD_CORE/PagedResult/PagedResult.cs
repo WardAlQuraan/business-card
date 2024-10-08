@@ -12,7 +12,7 @@ namespace BUSINESS_CARD_CORE
     {
     }
 
-    public PaginationResult(List<T> data, int count, PaginateParam paginateParam)
+    public PaginationResult(List<T> data, int count, BaseParam paginateParam)
     {
       Data = data;
       Count = count;

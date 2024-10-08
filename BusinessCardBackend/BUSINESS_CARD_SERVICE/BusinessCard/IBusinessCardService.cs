@@ -1,13 +1,13 @@
 using BUSINESS_CARD_CORE;
 using BUSINESS_CARD_ENTITIES;
+using BUSINESS_CARD_SERVICE.CommonServices;
 
 namespace BUSINESS_CARD_SERVICE
 {
-  public interface IBusinessCardService
+  public interface IBusinessCardService : IBaseService<BusinessCard , BusinessCardSearchParam>
   {
-    Task<PaginationResult<BusinessCard>> SearchAsync(BusinessCardSearchParam param);
-    Task<BusinessCard> InsertAsync(BusinessCardInsertParam newBusinessCard);
-    Task<bool> DeleteAsync(int id);
     Task<int> Import(ImportFileParams @params);
+    Task<BusinessCard> InsertAsync(BusinessCardInsertParam businessCard);
+
   }
 }

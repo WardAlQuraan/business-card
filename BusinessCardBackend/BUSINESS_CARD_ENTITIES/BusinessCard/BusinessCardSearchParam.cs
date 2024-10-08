@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BUSINESS_CARD_ENTITIES
 {
-  public class BusinessCardSearchParam : PaginateParam
+  public class BusinessCardSearchParam : BaseParam
   {
     public int? Id { get; set; }
     public string? Name { get; set; }
@@ -17,8 +17,6 @@ namespace BUSINESS_CARD_ENTITIES
     public DateTime? DOB { get; set; }
     public string? Phone { get; set; }
     public string? Email { get; set; }
-    public string? SortColumn { get; set; }
-    public string? SortDirection { get; set; } = "asc";
     public FileType FileType { get; set; }
 
 

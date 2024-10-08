@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BUSINESS_CARD_SERVICE.CommonServices
 {
-  public interface ICsvBase64Service: IFileCommonService
+  public interface ICsvService: IFileCommonService
   {
   }
 }

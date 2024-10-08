@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace BUSINESS_CARD_SERVICE.CommonServices
 {
-  public class CsvBase64Service:ICsvBase64Service
+  public class CsvService:ICsvService
   {
     private readonly IBusinessCardRepo _businessCardRepo;
 
-    public CsvBase64Service(IBusinessCardRepo businessCardRepo)
+    public CsvService(IBusinessCardRepo businessCardRepo)
     {
       _businessCardRepo = businessCardRepo;
     }

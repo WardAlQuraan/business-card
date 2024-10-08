@@ -30,8 +30,8 @@ builder.Services.AddDbContext<BusinessCardContext>(options =>
 
 builder.Services.AddScoped<IBusinessCardRepo , BusinessCardRepo>();
 builder.Services.AddScoped<IBusinessCardService , BusinessCardService>();
-builder.Services.AddScoped<ICsvBase64Service, CsvBase64Service>();
-builder.Services.AddScoped<IXmlBase64Service , XmlBase64Service>();
+builder.Services.AddScoped<ICsvService, CsvService>();
+builder.Services.AddScoped<IXmlService , XmlService>();
 builder.Services.AddScoped<IQrCodeService, QrCodeService>();
 
 builder.Services.AddCors(options =>

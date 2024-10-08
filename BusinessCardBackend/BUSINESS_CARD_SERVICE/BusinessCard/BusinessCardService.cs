@@ -22,11 +22,11 @@ namespace BUSINESS_CARD_SERVICE
   public class BusinessCardService : IBusinessCardService
   {
     private readonly IBusinessCardRepo _businessCardRepo;
-    private readonly IXmlBase64Service _xmlBase64Service;
-    private readonly ICsvBase64Service _csvBase64Service;
+    private readonly IXmlService _xmlBase64Service;
+    private readonly ICsvService _csvBase64Service;
     private readonly IQrCodeService _qrCodeService;
 
-    public BusinessCardService(IBusinessCardRepo businessCardRepo, ICsvBase64Service csvBase64Service, IXmlBase64Service xmlBase64Service, IQrCodeService qrCodeService)
+    public BusinessCardService(IBusinessCardRepo businessCardRepo, ICsvService csvBase64Service, IXmlService xmlBase64Service, IQrCodeService qrCodeService)
     {
       _businessCardRepo = businessCardRepo;
       _csvBase64Service = csvBase64Service;
@@ -39,6 +39,11 @@ namespace BUSINESS_CARD_SERVICE
       return await _businessCardRepo.SearchAsync(param);
     }
    
+    public Task<BusinessCard> InsertAsync(BusinessCard businessCard)
+    {
+      throw new NotImplementedException();
+    }
+
     public async Task<BusinessCard> InsertAsync(BusinessCardInsertParam businessCard)
     {
       if (businessCard.Image != null)
