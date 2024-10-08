@@ -4,6 +4,7 @@ using BUSINESS_CARD_CORE.CommonEnums;
 using BUSINESS_CARD_ENTITIES;
 using BUSINESS_CARD_REPOSITORIES;
 using BUSINESS_CARD_SERVICE.CommonServices;
+using BUSINESS_CARD_SERVICE.CommonServices.Base;
 using BUSINESS_CARD_SERVICE.CommonServices.QrCode;
 using BUSINESS_CARD_SERVICE.Helpers;
 using Microsoft.AspNetCore.Http;
@@ -19,27 +20,24 @@ using System.Xml.Serialization;
 
 namespace BUSINESS_CARD_SERVICE
 {
-  public class BusinessCardService : IBusinessCardService
+  public class BusinessCardService :
+    BaseService<BusinessCard,BusinessCardContext , IBusinessCardRepo , BusinessCardSearchParam> ,
+    IBusinessCardService
   {
-    private readonly IBusinessCardRepo _businessCardRepo;
     private readonly IXmlService _xmlBase64Service;
     private readonly ICsvService _csvBase64Service;
     private readonly IQrCodeService _qrCodeService;
 
-    public BusinessCardService(IBusinessCardRepo businessCardRepo, ICsvService csvBase64Service, IXmlService xmlBase64Service, IQrCodeService qrCodeService)
+    public BusinessCardService(IBusinessCardRepo repo, ICsvService csvBase64Service, IXmlService xmlBase64Service, IQrCodeService qrCodeService):base(repo)
     {
-      _businessCardRepo = businessCardRepo;
       _csvBase64Service = csvBase64Service;
       _xmlBase64Service = xmlBase64Service;
       _qrCodeService = qrCodeService;
     }
 
-    public async Task<PaginationResult<BusinessCard>> SearchAsync(BusinessCardSearchParam param)
-    {
-      return await _businessCardRepo.SearchAsync(param);
-    }
+    
    
-    public Task<BusinessCard> InsertAsync(BusinessCard businessCard)
+    public override Task<BusinessCard> InsertAsync(BusinessCard businessCard)
     {
       throw new NotImplementedException();
     }
@@ -50,13 +48,10 @@ namespace BUSINESS_CARD_SERVICE
       {
         businessCard.Base64 = await FilesHelper.GetBase64(businessCard.Image);
       }
-      return await _businessCardRepo.InsertAsync(businessCard);
+      return await _repo.InsertAsync(businessCard);
     }
 
-    public async Task<bool> DeleteAsync(int id)
-    {
-      return await _businessCardRepo.DeleteAsync(id);
-    }
+    
 
 
     public async Task<int> Import(ImportFileParams @params)
@@ -80,7 +75,7 @@ namespace BUSINESS_CARD_SERVICE
       }
       if(businessCards.Any())
       {
-        return await _businessCardRepo.BulkInsertAsync(businessCards);
+        return await _repo.BulkInsertAsync(businessCards);
       }
       return 0;
 
