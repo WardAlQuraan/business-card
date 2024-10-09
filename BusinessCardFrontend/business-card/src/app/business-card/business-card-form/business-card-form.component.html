@@ -1,23 +1,14 @@
+<mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="50" class="loading-spinner"></mat-progress-spinner>
 
-<mat-progress-spinner 
-  *ngIf="isLoading" 
-  mode="indeterminate" 
-  diameter="50" 
-  class="loading-spinner">
-</mat-progress-spinner>
 <div class="form-container">
-
     <form [formGroup]="businessCardForm" (ngSubmit)="onSubmit()">
-        
-        <h2>Business Card Form</h2> <!-- Added a heading for clarity -->
+        <h2>Business Card Form</h2>
 
         <!-- Name Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name" placeholder="Enter Name" />
-            <mat-error *ngIf="businessCardForm.get('name')?.hasError('required') && businessCardForm.get('name')?.touched">
-                Name is required.
-            </mat-error>
+            <mat-error *ngIf="isFieldInvalid('name')">Name is required.</mat-error>
         </mat-form-field>
 
         <!-- Gender Field -->
@@ -27,9 +18,7 @@
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="female">Female</mat-option>
             </mat-select>
-            <mat-error *ngIf="businessCardForm.get('gender')?.hasError('required') && businessCardForm.get('gender')?.touched">
-                Gender is required.
-            </mat-error>
+            <mat-error *ngIf="isFieldInvalid('gender')">Gender is required.</mat-error>
         </mat-form-field>
 
         <!-- Date of Birth Field -->
@@ -38,33 +27,23 @@
             <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Select Date of Birth" />
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="businessCardForm.get('dob')?.hasError('required') && businessCardForm.get('dob')?.touched">
-                Date of Birth is required.
-            </mat-error>
+            <mat-error *ngIf="isFieldInvalid('dob')">Date of Birth is required.</mat-error>
         </mat-form-field>
 
         <!-- Email Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" placeholder="Enter Email" type="email" />
-            <mat-error *ngIf="businessCardForm.get('email')?.hasError('required') && businessCardForm.get('email')?.touched">
-                Email is required.
-            </mat-error>
-            <mat-error *ngIf="businessCardForm.get('email')?.hasError('email') && businessCardForm.get('email')?.touched">
-                Please enter a valid email.
-            </mat-error>
+            <mat-error *ngIf="isFieldInvalid('email')">Email is required.</mat-error>
+            <mat-error *ngIf="businessCardForm.get('email')?.hasError('email') && businessCardForm.get('email')?.touched">Please enter a valid email.</mat-error>
         </mat-form-field>
 
         <!-- Phone Field -->
         <mat-form-field appearance="fill" class="form-field">
             <mat-label>Phone</mat-label>
             <input matInput formControlName="phone" placeholder="Enter Phone Number" type="tel" />
-            <mat-error *ngIf="businessCardForm.get('phone')?.hasError('required') && businessCardForm.get('phone')?.touched">
-                Phone number is required.
-            </mat-error>
+            <mat-error *ngIf="isFieldInvalid('phone')">Phone number is required.</mat-error>
         </mat-form-field>
-
-     
 
         <!-- Drag-and-Drop File Upload Area -->
         <div class="drag-drop-area" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)"
@@ -75,7 +54,6 @@
             <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="image-preview" />
         </div>
 
-    
         <!-- Submit Button -->
         <button mat-raised-button color="primary" type="submit" class="submit-button m-2">Submit</button>
     </form>

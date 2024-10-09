@@ -1,105 +1,86 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IBusinessCard } from '../models/business-card';
 import { BusinessCardService } from 'src/app/services/business-card/business-card.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import * as QRCode from 'qrcode';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-business-card-form',
   templateUrl: './business-card-form.component.html',
-  styleUrls: ['./business-card-form.component.scss']
+  styleUrls: ['./business-card-form.component.scss'],
 })
 export class BusinessCardFormComponent implements OnInit {
-
   isLoading = false;
-  businessCardForm!: FormGroup;
-  file: File | undefined;
+  businessCardForm: FormGroup;
   imagePreview: string | undefined;
+
   constructor(
     private fb: FormBuilder,
     private businessCardService: BusinessCardService,
     private snackbarService: SnackbarService,
-    private router: Router) {
+    private router: Router
+  ) {
     this.businessCardForm = this.fb.group({
-      name: ['', Validators.required], // Required
-      gender: ['', Validators.required], // Required
-      dob: ['', Validators.required], // Required
-      email: ['', [Validators.required, Validators.email]], // Required and email format
+      name: ['', Validators.required],
+      gender: ['', Validators.required],
+      dob: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      image: ['']
-
+      image: [''],
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   getFile(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length) {
+    if (input.files?.length) {
       this.updateFile(input.files[0]);
     }
   }
+  isFieldInvalid(fieldName: string): boolean {
+    const control = this.businessCardForm.get(fieldName)!;
+    return control?.hasError('required') && control?.touched;
+  }
+
 
   onDrop(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
-
     if (event.dataTransfer?.files) {
-      this.updateFile(event.dataTransfer.files[0]); // Update the file on drop
+      this.updateFile(event.dataTransfer.files[0]);
     }
   }
 
   updateFile(image: File): void {
-    this.businessCardForm.patchValue({ image }); // Update the file control
+    this.businessCardForm.patchValue({ image });
     this.previewImage(image);
   }
 
   previewImage(file: File): void {
     const reader = new FileReader();
-    reader.onload = (e) => {
-      this.imagePreview = e.target?.result as string; // Convert result to string
-    };
-    reader.readAsDataURL(file); // Read file as data URL
+    reader.onload = (e) => (this.imagePreview = e.target?.result as string);
+    reader.readAsDataURL(file);
   }
-
-
 
   onDragOver(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
-    const dropArea = document.querySelector('.drag-drop-area');
-    if (dropArea) {
-      dropArea.classList.add('drag-over'); // Add the drag-over class
-    }
+    document.querySelector('.drag-drop-area')?.classList.add('drag-over');
   }
 
   onDragLeave(event: DragEvent): void {
     event.preventDefault();
-    event.stopPropagation();
-    const dropArea = document.querySelector('.drag-drop-area');
-    if (dropArea) {
-      dropArea.classList.remove('drag-over'); // Remove the drag-over class
-    }
+    document.querySelector('.drag-drop-area')?.classList.remove('drag-over');
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.businessCardForm.valid) {
-      const formData = new FormData();
-      formData.append('name', this.businessCardForm.get('name')?.value);
-      formData.append('gender', this.businessCardForm.get('gender')?.value);
-      formData.append('dob', this.businessCardForm.get('dob')?.value.toISOString());
-      formData.append('email', this.businessCardForm.get('email')?.value);
-      formData.append('phone', this.businessCardForm.get('phone')?.value);
-      formData.append('image', this.businessCardForm.get('image')?.value); // Use 'file' control to get the uploaded image
-
+      const formData = this.createFormData();
+      this.isLoading = true;
       this.businessCardService.insert(formData).subscribe(
-        (response) => {
-          this.isLoading = true;
+        () => {
           this.snackbarService.showSuccess('Business card added successfully!');
-          this.businessCardForm.reset(); // Reset form after successful submission
-          this.file = undefined;
-          this.router.navigate(["../"]);
+          this.resetForm();
+          this.router.navigate(['../']);
         },
         (error) => {
           this.isLoading = false;
@@ -112,4 +93,18 @@ export class BusinessCardFormComponent implements OnInit {
     }
   }
 
+  private createFormData(): FormData {
+    const formData = new FormData();
+    Object.keys(this.businessCardForm.value).forEach((key) => {
+      const value = this.businessCardForm.get(key)?.value;
+      formData.append(key, key === 'dob' ? value.toISOString() : value);
+    });
+    return formData;
+  }
+
+  private resetForm(): void {
+    this.businessCardForm.reset();
+    this.imagePreview = undefined;
+    this.isLoading = false;
+  }
 }

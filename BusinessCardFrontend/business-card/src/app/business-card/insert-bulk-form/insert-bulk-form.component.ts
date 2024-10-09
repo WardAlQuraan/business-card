@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BusinessCardService } from 'src/app/services/business-card/business-card.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { FileType } from '../models/fileType';
-import { Router } from '@angular/router';
-import { CsvService } from 'src/app/services/csv/csv.service';
 
 @Component({
   selector: 'app-insert-bulk-form',
@@ -13,92 +10,91 @@ import { CsvService } from 'src/app/services/csv/csv.service';
 })
 export class InsertBulkFormComponent implements OnInit {
   businessCardForm!: FormGroup;
-  file: File | undefined; // Keep track of the selected file
-  filePreview: string | undefined; // Preview for image files
-  fileType: FileType | undefined; // To store the file type for validation
+  selectedFile?: File; // To store the selected file
+  filePreviewUrl?: string; // URL for image preview
+  fileType?: FileType; // File type for validation
   isLoading = false;
 
   constructor(
-    
-    private snackbarService: SnackbarService,
-    private fb: FormBuilder) {
-    this.businessCardForm = this.fb.group({
-      file: [null], // Changed 'image' to 'file'
+    private formBuilder: FormBuilder,
+    private snackbarService: SnackbarService
+  ) {
+    this.businessCardForm = this.formBuilder.group({
+      file: [null], // 'file' field in the form
     });
   }
 
   ngOnInit(): void { }
 
-  getFile(event: Event): void {
+  handleFileInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length) {
+    if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      this.updateFile(file);
+      this.processFile(file);
     }
   }
 
-  onDrop(event: DragEvent): void {
-    event.preventDefault(); // Prevent default behavior
+  handleFileDrop(event: DragEvent): void {
+    event.preventDefault();
     event.stopPropagation();
 
-    if (event.dataTransfer?.files) {
-      this.updateFile(event.dataTransfer.files[0]); // Update the file on drop
+    if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
+      this.processFile(event.dataTransfer.files[0]); // Process the dropped file
     }
   }
 
-  updateFile(file: File): void {
-    const validFileTypes = ['text/csv', 'application/xml', 'text/xml', 'image/png', 'image/jpeg', 'image/gif'];
-    if (validFileTypes.includes(file.type)) {
-      this.businessCardForm.patchValue({ file }); // Update the form control with the file
-      if (file.type == 'text/csv') {
+  processFile(file: File): void {
+    const allowedFileTypes = ['text/csv', 'application/xml', 'text/xml', 'image/png', 'image/jpeg', 'image/gif'];
+
+    if (allowedFileTypes.includes(file.type)) {
+      this.businessCardForm.patchValue({ file }); // Update form with selected file
+
+      if (file.type === 'text/csv') {
         this.fileType = FileType.csv;
-      } else if (file.type == 'application/xml' || file.type == 'text/xml') {
+      } else if (file.type === 'application/xml' || file.type === 'text/xml') {
         this.fileType = FileType.xml;
       } else {
         this.fileType = FileType.qrCode;
       }
-      this.previewFile(file); // Preview the file
+
+      this.generateFilePreview(file); // Generate preview for the selected file
     } else {
-      this.snackbarService.showError('Invalid file type. Please upload a CSV, XML, or an image file.');
+      this.snackbarService.showError('Invalid file type. Please upload a CSV, XML, or image file.');
     }
   }
 
-  previewFile(file: File): void {
-    
-    this.file = file;
-    if (this.fileType == FileType.qrCode) {
+  generateFilePreview(file: File): void {
+    this.selectedFile = file;
+
+    if (this.fileType === FileType.qrCode) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.filePreview = e.target?.result as string; // Convert result to string for image preview
+        this.filePreviewUrl = e.target?.result as string; // Store image preview URL
       };
-      reader.readAsDataURL(file); // Read file as data URL for preview
+      reader.readAsDataURL(file); // Read file as a data URL for image preview
     } else {
-      this.filePreview = undefined;
-      
+      this.filePreviewUrl = undefined; // No preview for non-image files
     }
   }
 
-  onDragOver(event: DragEvent): void {
-    this.file = undefined;
-    event.preventDefault(); // Prevent default behavior
+  handleDragOver(event: DragEvent): void {
+    event.preventDefault();
     event.stopPropagation();
     const dropArea = event.currentTarget as HTMLElement;
-    dropArea.classList.add('drag-over'); // Add the drag-over class for styling
+    dropArea.classList.add('drag-over'); // Add styling for drag over effect
   }
 
-  onDragLeave(event: DragEvent): void {
-    event.preventDefault(); // Prevent default behavior
+  handleDragLeave(event: DragEvent): void {
+    event.preventDefault();
     event.stopPropagation();
     const dropArea = event.currentTarget as HTMLElement;
-    dropArea.classList.remove('drag-over'); // Remove the drag-over class
+    dropArea.classList.remove('drag-over'); // Remove drag over styling
   }
 
-  clearFile(): void {
-    this.businessCardForm.patchValue({ file: null }); // Clear the form control value
-    this.filePreview = undefined; // Clear the file preview
-    this.fileType = undefined; // Clear the file type
-    this.file = undefined;
+  clearFileSelection(): void {
+    this.businessCardForm.patchValue({ file: null }); // Clear the form control
+    this.filePreviewUrl = undefined; // Clear the file preview
+    this.fileType = undefined; // Reset the file type
+    this.selectedFile = undefined;
   }
-
- 
 }

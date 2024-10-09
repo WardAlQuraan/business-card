@@ -1,23 +1,23 @@
 <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="50" class="loading-spinner">
 </mat-progress-spinner>
 
-<div class="drag-drop-area mt-2" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)"
+<div class="drag-drop-area mt-2" (dragover)="handleDragOver($event)" (dragleave)="handleDragLeave($event)" (drop)="handleFileDrop($event)"
     (click)="fileInput.click()">
     <p *ngIf="!businessCardForm.get('file')?.value">Drag & Drop your file here or click to upload</p>
     <p *ngIf="businessCardForm.get('file')?.value">File Name: {{ businessCardForm.get('file')?.value.name }}</p>
-    <input type="file" (change)="getFile($event)" #fileInput class="file-input" accept=".csv, .xml, image/*" hidden />
-    <img *ngIf="filePreview" [src]="filePreview" alt="File Preview" class="image-preview" />
-    <p *ngIf="fileType && !filePreview">File uploaded but not an image: {{ businessCardForm.get('file')?.value.name }}
+    <input type="file" (change)="handleFileInput($event)" #fileInput class="file-input" accept=".csv, .xml, image/*" hidden />
+    <img *ngIf="filePreviewUrl" [src]="filePreviewUrl" alt="File Preview" class="image-preview" />
+    <p *ngIf="fileType && !filePreviewUrl">File uploaded but not an image: {{ businessCardForm.get('file')?.value.name }}
     </p>
 </div>
 
 <!-- Hint about accepted file types -->
 
 <div class="button-container" *ngIf="businessCardForm.get('file')?.value">
-    <button mat-raised-button color="warn" (click)="clearFile()" class="clear-button m-1" [disabled]="isLoading">
+    <button mat-raised-button color="warn" (click)="clearFileSelection()" class="clear-button m-1" [disabled]="isLoading">
         <mat-icon>delete</mat-icon> Clear
     </button>
 </div>
 <p class="file-hint">Accepted file types: CSV, XML, QR code image.</p>
 
-<app-business-card-file *ngIf="file" [fileType]="fileType" [file]="file"></app-business-card-file>
+<app-business-card-file *ngIf="selectedFile" [fileType]="fileType" [file]="selectedFile"></app-business-card-file>

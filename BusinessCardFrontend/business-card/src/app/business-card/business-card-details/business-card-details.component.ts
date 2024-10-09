@@ -1,15 +1,14 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IBusinessCard } from '../models/business-card';
-import { BusinessCardParams } from '../models/business-card-params';
 import { MatSelectChange } from '@angular/material/select';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDialog } from '@angular/material/dialog';
+import { IBusinessCard } from '../models/business-card';
+import { BusinessCardParams } from '../models/business-card-params';
 import { BusinessCardService } from 'src/app/services/business-card/business-card.service';
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { environment } from 'src/environments/environment';
-import { MatDialog } from '@angular/material/dialog';
 import { ImageDialougComponent } from '../image-dialoug/image-dialoug.component';
 import { DeleteBusinessCardDialogComponent } from '../delete-business-card-dialog/delete-business-card-dialog.component';
 import { FileType } from '../models/fileType';
@@ -20,111 +19,75 @@ import { FileType } from '../models/fileType';
   styleUrls: ['./business-card-details.component.scss']
 })
 export class BusinessCardDetailsComponent implements OnInit {
-  displayedColumns: string[] = ['id','name', 'gender', 'dob', 'email', 'phone', 'imagePath', 'qr-code', 'delete'];
-  dataSource!: MatTableDataSource<IBusinessCard>;
-  params!: BusinessCardParams;
+  displayedColumns = ['id', 'name', 'gender', 'dob', 'email', 'phone', 'imagePath', 'qr-code', 'delete'];
+  dataSource = new MatTableDataSource<IBusinessCard>();
+  params: BusinessCardParams = { name: null, gender: null, dob: null, email: null, phone: null, sortColumn: null, sortDirection: null, fileType: null };
   pageIndex = 0;
   pageSize = 10;
   count = 0;
   host = environment.host;
-
-  businessCards: IBusinessCard[] = [];
-  @ViewChild(MatSort) sort!: MatSort;
-
   isLoading = false;
+  businessCards: IBusinessCard[] = [];
+
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private businessCardService: BusinessCardService,
     private snackBarService: SnackbarService,
-    private dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource();
-    debugger;
-  }
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.params = {
-      email: null,
-      phone: null,
-      dob: null,
-      gender: null,
-      name: null,
-      sortColumn: null,
-      sortDirection: null,
-      fileType: null
-    };
     this.getBusinessCards();
   }
 
-
   getBusinessCards() {
     this.isLoading = true;
-    const params = this.getParamsToSearch();
-
-    this.businessCardService.search(params).subscribe(
+    this.businessCardService.search(this.getParamsToSearch()).subscribe(
       res => {
         this.businessCards = res.data;
-        this.dataSource = new MatTableDataSource(this.businessCards);
+        this.dataSource.data = this.businessCards;
         this.dataSource.sort = this.sort;
-        this.pageIndex = res.pageIndex;
-        this.pageSize = res.pageSize;
-
-        // Ensure `count` is updated correctly
-        this.count = res.count; // Total count for paginator
-        console.log("Total Count:", this.count); // Log the count for debugging
-
+        this.count = res.count;
         this.isLoading = false;
       },
       err => {
-        this.isLoading = false;
         this.snackBarService.showError(err.message);
+        this.isLoading = false;
       }
     );
   }
 
-
   getParamsToSearch() {
     return {
-      name: this.params.name,
-      gender: this.params.gender,
-      dob: this.params.dob,
-      email: this.params.email,
-      phone: this.params.phone,
+      ...this.params,
       pageIndex: this.pageIndex,
       pageSize: this.pageSize,
-      sortColumn: this.sort ? this.sort.active : null,
-      sortDirection: this.sort ? this.sort.direction : null,
-      fileType: this.params.fileType
+      sortColumn: this.sort?.active,
+      sortDirection: this.sort?.direction
     };
   }
 
   sortTable(event: any) {
     this.sort.active = event.active;
     this.sort.direction = event.direction;
+  
     this.getBusinessCards();
   }
+  
 
-  applyFilter(event: Event | MatSelectChange | MatDatepickerInputEvent<any>, column: keyof IBusinessCard) {
+  applyFilter(event: MatSelectChange | MatDatepickerInputEvent<any> | Event, column: keyof IBusinessCard) {
     let filterValue: string | null = null;
+
     if (event instanceof MatSelectChange) {
       filterValue = event.value;
     } else if (event instanceof MatDatepickerInputEvent) {
-      if (event.value) {
-        const utcDate = new Date(Date.UTC(
-          event.value.getUTCFullYear(),
-          event.value.getUTCMonth(),
-          event.value.getUTCDate()
-        ));
-        filterValue = utcDate.toISOString();
-      } else {
-        filterValue = null;
-      }
-    } else if ((event as any).target && (event.target as HTMLInputElement).value) {
+      filterValue = event.value ? new Date(event.value).toISOString() : null;
+    } else if ((event as any).target) {
       filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     }
 
     this.params[column] = filterValue;
-
-
   }
 
   onPageChange(event: any) {
@@ -135,67 +98,49 @@ export class BusinessCardDetailsComponent implements OnInit {
 
   onDelete(id: any): void {
     const dialogRef = this.dialog.open(DeleteBusinessCardDialogComponent);
-
     dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.isLoading = true;
-        this.businessCardService.delete(id).subscribe(res => {
-          if (res) {
-            this.snackBarService.showSuccess("Deleted successfully");
-          } else {
-            this.snackBarService.showError("Can't delete");
-          }
-          this.isLoading = false;
+      if (result) {
+        this.businessCardService.delete(id).subscribe(() => {
+          this.snackBarService.showSuccess("Deleted successfully");
           this.getBusinessCards();
-        }, err => {
-          this.snackBarService.showError("Can't delete");
-          this.isLoading = false;
-        });
+        }, err => this.snackBarService.showError("Can't delete"));
       }
     });
   }
 
-  openImageDialog(base64: string): void {
-    this.dialog.open(ImageDialougComponent, {
-      data: { base64 },
-      width: '80%',
-    });
+  openImageDialog(base64: string) {
+    this.dialog.open(ImageDialougComponent, { data: { base64 }, width: '80%' });
   }
-
 
   exportToXml() {
-    this.params.fileType = FileType.xml;
-    this.businessCardService.export(this.params).subscribe(response => {
-      const blob = new Blob([response], { type: 'application/xml' });
-      this.downloadFile(blob, 'businessCards', `xml`);
-    });
+    this.exportFile(FileType.xml, 'businessCards', 'xml');
   }
+
   exportToCsv() {
-    this.params.fileType = FileType.csv;
+    this.exportFile(FileType.csv, 'businessCards', 'csv');
+  }
+
+  exportFile(fileType: FileType, fileName: string, extension: string) {
+    this.params.fileType = fileType;
     this.businessCardService.export(this.params).subscribe(response => {
-      const blob = new Blob([response], { type: 'text/csv' });
-      this.downloadFile(blob, 'businessCards', `csv`);
+      const blob = new Blob([response], { type: fileType === FileType.xml ? 'application/xml' : 'text/csv' });
+      this.downloadFile(blob, fileName, extension);
     });
   }
 
   generateQrCode(businessCard: IBusinessCard) {
-
     this.businessCardService.generateQrCode(businessCard).subscribe(response => {
-      const blob = new Blob([response]);
-      this.downloadFile(blob, `qr-code(${businessCard.name})`, `png`);
-    }, err => {
-      this.snackBarService.showError("Can't Generate Qr code")
-    });
+      const blob = new Blob([response], { type: 'image/png' });
+      this.downloadFile(blob, `qr-code(${businessCard.name})`, 'png');
+    }, () => this.snackBarService.showError("Can't generate QR code"));
   }
 
-
-  downloadFile(blob: Blob, fileName: string, extinsion: string) {
+  downloadFile(blob: Blob, fileName: string, extension: string) {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${fileName}.${extinsion}`;
+    a.download = `${fileName}.${extension}`;
     a.click();
     window.URL.revokeObjectURL(url);
   }
-
 }
