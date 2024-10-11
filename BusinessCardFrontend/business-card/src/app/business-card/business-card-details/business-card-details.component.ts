@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { ImageDialougComponent } from '../image-dialoug/image-dialoug.component';
 import { DeleteBusinessCardDialogComponent } from '../delete-business-card-dialog/delete-business-card-dialog.component';
 import { FileType } from '../models/fileType';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-business-card-details',
@@ -34,7 +35,8 @@ export class BusinessCardDetailsComponent implements OnInit {
   constructor(
     private businessCardService: BusinessCardService,
     private snackBarService: SnackbarService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -58,14 +60,24 @@ export class BusinessCardDetailsComponent implements OnInit {
     );
   }
 
+  clearDob() {
+    this.params.dob = null;  // Reset DOB field to null
+  }
+  
   getParamsToSearch() {
-    return {
+
+    let paramsToSearch = 
+    {
       ...this.params,
       pageIndex: this.pageIndex,
       pageSize: this.pageSize,
       sortColumn: this.sort?.active,
       sortDirection: this.sort?.direction
     };
+    if (paramsToSearch.dob) {
+      paramsToSearch.dob = this.datePipe.transform(this.params.dob, 'dd/MM/yyyy');
+    }
+    return paramsToSearch;  
   }
 
   sortTable(event: any) {
@@ -75,20 +87,6 @@ export class BusinessCardDetailsComponent implements OnInit {
     this.getBusinessCards();
   }
   
-
-  applyFilter(event: MatSelectChange | MatDatepickerInputEvent<any> | Event, column: keyof IBusinessCard) {
-    let filterValue: string | null = null;
-
-    if (event instanceof MatSelectChange) {
-      filterValue = event.value;
-    } else if (event instanceof MatDatepickerInputEvent) {
-      filterValue = event.value ? new Date(event.value).toISOString() : null;
-    } else if ((event as any).target) {
-      filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    }
-
-    this.params[column] = filterValue;
-  }
 
   onPageChange(event: any) {
     this.pageIndex = event.pageIndex;

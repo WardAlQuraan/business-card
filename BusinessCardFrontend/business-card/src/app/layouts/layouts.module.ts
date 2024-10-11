@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { LayoutsRoutingModule } from './layouts-routing.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
@@ -30,6 +30,9 @@ import { BusinessCardFileComponent } from '../business-card/insert-bulk-form/bus
     SharedModuleModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers:[
+    DatePipe
   ]
 })
 export class LayoutsModule { }
