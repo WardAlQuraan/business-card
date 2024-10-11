@@ -52,33 +52,5 @@ namespace BUSINESS_CARD_SERVICE
     }
 
     
-
-
-    public async Task<int> Import(ImportFileParams @params)
-    {
-      List<BusinessCard> businessCards = new List<BusinessCard>();
-      switch (@params.FileType)
-      {
-        case FileType.CSV:
-          businessCards = await _csvBase64Service.GetBusinessCards(@params.File);
-          break;
-        case FileType.XML:
-          businessCards = await _xmlBase64Service.GetBusinessCards(@params.File);
-          break;
-        default:
-          var businessCard = await _qrCodeService.GetBusinessCard(@params.File);
-          if(businessCard != null)
-          {
-            businessCards.Add(businessCard);
-          }
-          break;
-      }
-      if(businessCards.Any())
-      {
-        return await _repo.BulkInsertAsync(businessCards);
-      }
-      return 0;
-
-    }
   }
 }
