@@ -21,7 +21,7 @@ To set up the project locally, follow these steps:
 To download the database backup, follow these steps:
   1. Visit the [database dump](https://github.com/WardAlQuraan/business-card/blob/main/BusinessCardDump/BusinessCardDump.sql) file on GitHub.
   2. Copy the commands and run the script on your local machine
-  3. if you want to test please run the following commands to store them on your local database
+  3. if you want to test data please run the following commands to store them on your local database
      
 
   
